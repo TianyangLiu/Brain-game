@@ -14,7 +14,7 @@ var btnPlay = new start_button(97, 318, 549, 603);
 
 var btnBack = new back_button(78, 149, 526, 569);
 
-
+var btnLevelOne = new level_one_button(78, 149, 166, 209);
 
 
 function main(){
@@ -91,7 +91,14 @@ function back_to_startScreen(){
 	ctx.drawImage(start_screen, x, y, canvas.width, canvas.height);
 }
 
+function play_level_one(){
+    var x = 0;
+	var y = 0;
 
+	var level_one = new Image();
+	level_one.src = 'images/game_board_one.png';
+	ctx.drawImage(level_one, x, y, canvas.width, canvas.height);
+}
 
 
 
@@ -113,7 +120,7 @@ start_button.prototype.checkClicked = function(){
 
 
 
-//
+// the position of the back button on the choose-level page
 function back_button(xL, xR, yT, yB){
 	this.xLeft = xL;
 	this.xRight = xR;
@@ -128,19 +135,38 @@ back_button.prototype.checkClicked = function(){
 
 
 
+// the position of the level one button on the choose-level page
+function level_one_button(xL, xR, yT, yB){
+	this.xLeft = xL;
+	this.xRight = xR;
+	this.yTop = yT;
+	this.yButtom = yB;
+}
+level_one_button.prototype.checkClicked = function(){
+	if(this.xLeft <= mouseX && mouseX <= this.xRight && this.yTop <= mouseY && mouseY <= this.yButtom){
+		return true;
+	}
+}
+
+
 
 
 
 function mouseClicked(event){
 	mouseX = event.pageX - canvas.offsetLeft;
 	mouseY = event.pageY - canvas.offsetTop;
+
 	if(btnPlay.checkClicked()){
 		play();
 	};
 	
 	if(btnBack.checkClicked()){
 		back_to_startScreen();
-	}
+	};
+
+    if(btnLevelOne.checkClicked()){
+        play_level_one();
+    }
 }
 /* **********************
 button functions END here
