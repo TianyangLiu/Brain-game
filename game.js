@@ -16,9 +16,6 @@ intruction_two.src = 'images/instruction_page_two.png';
 var intruction_three = new Image();
 intruction_three.src = 'images/instruction_page_three.png';
 
-//var level_one = new Image();
-//level_one.src = 'images/game_board_one.png';
-
 var x = 0;
 var y = 0;
 var mouseX = 0;
@@ -29,19 +26,17 @@ var btnBack = new Button(78, 149, 526, 569);
 var btnLevelOne = new Button(78, 149, 166, 209);
 var btnIntruction = new Button(97, 318, 640, 695);
 //intruction page one button(left)
-var btnIPOne_L= new Button(29, 98, 670, 714);
+var btnStart= new Button(29, 98, 670, 714);
 //intruction page one button(right)
 var btnIPOne_R= new Button(315, 386, 670, 714);
 
 //intruction page two button(left)
-var btnIPTwo_L= new Button(97, 318, 549, 603);
+var btnIPTwo_L= new Button(245, 315, 670, 714);
 //intruction page two button(right)
-var btnIPTwo_R= new Button(97, 318, 549, 603);
+var btnIPTwo_R= new Button(323, 392, 670, 714);
 
-//intruction page three button(left)
-var btnIPThree_L= new Button(97, 318, 549, 603);
 //intruction page three button(right)
-var btnIPThree_R= new Button(97, 318, 549, 603);
+var btnIPThree_R= new Button(320, 318, 669, 603);
 
 var theBall = new Button(200, 221, 402, 422);
 
@@ -125,6 +120,10 @@ function instructionScreenOne(){
 
 function instructionScreentwo() {
     ctx.drawImage(intruction_two, x, y, canvas.width, canvas.height);   
+}
+
+function instructionScreenThree(){
+    ctx.drawImage(intruction_three, x, y, canvas.width, canvas.height);   
 }
 
 function instructionOne(){
@@ -221,19 +220,31 @@ function mouseClicked(event){
 
     if(theBall.checkClicked()){
         level_one_start();
-        setInterval(level_one_start, 10);
+        setInterval(level_one_start, 15);
     }
 
     if(btnIntruction.checkClicked()){
         instructionScreenOne();
     }
 
-    if(btnIPOne_L.checkClicked()){
-        clearCtxBg()
+    if(btnStart.checkClicked()){
+        //clearCtxBg();
         play();
     }
 
     if(btnIPOne_R.checkClicked()){
+        instructionScreentwo();
+    }
+
+    if(btnIPTwo_L.checkClicked()){
+        instructionScreenOne();
+    }
+
+    if(btnIPTwo_R.checkClicked()){
+        instructionScreenThree();
+    }
+
+    if(btnIPThree_R.checkClicked()){
         instructionScreentwo();
     }
 }
