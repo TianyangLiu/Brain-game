@@ -21,6 +21,8 @@ var y = 0;
 var mouseX = 0;
 var mouseY = 0;
 
+var boolean = false;
+
 var btnPlay = new Button(97, 318, 549, 603);
 var btnBack = new Button(78, 149, 526, 569);
 var btnLevelOne = new Button(78, 149, 166, 209);
@@ -159,7 +161,7 @@ function level_one_start(){
 }
 
 function ball_direction(){
-    if(ballY <= 380){
+    if(ballY < 380){
         tile_transform = new Image();
 	    tile_transform.src = 'images/game_board_two.png';
 	    ctx.drawImage(tile_transform, x, y, canvas.width, canvas.height);
@@ -174,6 +176,8 @@ function ball_direction(){
     function direction_change(){
             if(ballY <= 140){
                 ballSpeedY = 5;
+            }else if(ballY > 375){
+            ballSpeedY = -5;
             }
     }
 }
@@ -190,10 +194,12 @@ function Button(xL, xR, yT, yB){
 	this.yTop = yT;
 	this.yButtom = yB;
 }
-    Button.prototype.checkClicked = function(){
-	if(this.xLeft <= mouseX && mouseX <= this.xRight && this.yTop <= mouseY && mouseY <= this.yButtom){
-		return true;
-	}
+Button.prototype.checkClicked = function () {
+
+    if (this.xLeft <= mouseX && mouseX <= this.xRight && this.yTop <= mouseY && mouseY <= this.yButtom) {
+        boolean = true;
+        return boolean;
+    }
 }
 //end of button functions
 
@@ -208,7 +214,7 @@ function mouseClicked(event){
 	};
 	
 	if(btnBack.checkClicked()){
-		back_to_startScreen();
+		startScreen();
 	};
 
     if(btnLevelOne.checkClicked()){
