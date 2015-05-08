@@ -7,14 +7,17 @@ var canvas,
 var start_screen = new Image();
 start_screen.src = 'images/start_screen_background2.jpg';
 
+//var level_one = new Image();
+//level_one.src = 'images/game_board_one.png';
+
 var mouseX = 0;
 var mouseY = 0;
 
-var btnPlay = new start_button(97, 318, 549, 603);
+var btnPlay = new Button(97, 318, 549, 603);
 
-var btnBack = new back_button(78, 149, 526, 569);
+var btnBack = new Button(78, 149, 526, 569);
 
-var btnLevelOne = new level_one_button(78, 149, 166, 209);
+var btnLevelOne = new Button(78, 149, 166, 209);
 
 
 function main(){
@@ -72,7 +75,7 @@ function render(){
 
 /* 
 ************************
-button functions start here
+main functions
 ************************
 */
 function play(){
@@ -85,7 +88,7 @@ function play(){
 	ctx.drawImage(level_stage, x, y, canvas.width, canvas.height);
 }
 
-function back_to_startScreen(){
+function startScreen(){
 	var x = 0;
 	var y = 0;
 	
@@ -113,58 +116,25 @@ function play_level_one(){
 	ctx.fill();
 }
 
-
+//end of main function
 
 //开始按钮的位置及判定
-//the position of start button
-function start_button(xL, xR, yT, yB){
+//button function
+function Button(xL, xR, yT, yB){
 	this.xLeft = xL;
 	this.xRight = xR;
 	this.yTop = yT;
 	this.yButtom = yB;
 }
-start_button.prototype.checkClicked = function(){
+    Button.prototype.checkClicked = function(){
 	if(this.xLeft <= mouseX && mouseX <= this.xRight && this.yTop <= mouseY && mouseY <= this.yButtom){
 		return true;
 	}
 }
-//-----------------------
+//end of button functions
 
 
-
-
-// the position of the back button on the choose-level page
-function back_button(xL, xR, yT, yB){
-	this.xLeft = xL;
-	this.xRight = xR;
-	this.yTop = yT;
-	this.yButtom = yB;
-}
-back_button.prototype.checkClicked = function(){
-	if(this.xLeft <= mouseX && mouseX <= this.xRight && this.yTop <= mouseY && mouseY <= this.yButtom){
-		return true;
-	}
-}
-
-
-
-// the position of the level one button on the choose-level page
-function level_one_button(xL, xR, yT, yB){
-	this.xLeft = xL;
-	this.xRight = xR;
-	this.yTop = yT;
-	this.yButtom = yB;
-}
-level_one_button.prototype.checkClicked = function(){
-	if(this.xLeft <= mouseX && mouseX <= this.xRight && this.yTop <= mouseY && mouseY <= this.yButtom){
-		return true;
-	}
-}
-
-
-
-
-
+//event functions
 function mouseClicked(event){
 	mouseX = event.pageX - canvas.offsetLeft;
 	mouseY = event.pageY - canvas.offsetTop;
@@ -186,7 +156,7 @@ function mouseClicked(event){
     }
 }
 /* **********************
-button functions END here
+event functions END here
  ************************
 */
 main();
