@@ -45,7 +45,11 @@ var theBall = new Button(200, 221, 402, 422);
 var ballSpeedX = 0;
 var ballSpeedY = -5;
 
+var ClickButton = new Audio();
+ClickButton.src = "music/ClickButton.mp3";
 
+var HitWall = new Audio();
+HitWall.src = "music/HitWall.mp3";
 function main(){
 	var x = 0;
 	var y = 0;
@@ -115,7 +119,11 @@ function play(){
 function startScreen(){
 	ctx.drawImage(start_screen, x, y, canvas.width, canvas.height);
 }
-
+function bgm() { 
+var bgm = new Audio();
+bgm.src = "music/bgm.mp3";
+bgm.play();
+}
 function instructionScreenOne(){
     ctx.drawImage(intruction_one, x, y, canvas.width, canvas.height);   
 }
@@ -171,13 +179,16 @@ function ball_direction(){
 	    ctx.fill();
 
 	    direction_change();
+        
     }
 
     function direction_change(){
             if(ballY <= 140){
                 ballSpeedY = 5;
+                HitWall.play();
             }else if(ballY > 375){
             ballSpeedY = -5;
+            HitWall.play();
             }
     }
 }
@@ -199,6 +210,7 @@ Button.prototype.checkClicked = function () {
     if (this.xLeft <= mouseX && mouseX <= this.xRight && this.yTop <= mouseY && mouseY <= this.yButtom) {
         boolean = true;
         return boolean;
+        ClickButton.play();
     }
 }
 //end of button functions
@@ -211,44 +223,54 @@ function mouseClicked(event){
 
 	if(btnPlay.checkClicked()){
 		play();
+        ClickButton.play();
 	};
 	
 	if(btnBack.checkClicked()){
 		startScreen();
+        ClickButton.play();
 	};
 
     if(btnLevelOne.checkClicked()){
         play_level_one();
+        ClickButton.play();
     };
 
     if(theBall.checkClicked()){
         level_one_start();
         setInterval(level_one_start, 15);
+        ClickButton.play();
     }
 
     if(btnIntruction.checkClicked()){
         instructionScreenOne();
+        ClickButton.play();
     }
 
     if(btnStart.checkClicked()){
         //clearCtxBg();
         play();
+        ClickButton.play();
     }
 
     if(btnIPOne_R.checkClicked()){
         instructionScreenTwo();
+        ClickButton.play();
     }
 
     if(btnIPTwo_L.checkClicked()){
         instructionScreenOne();
+        ClickButton.play();
     }
 
     if(btnIPTwo_R.checkClicked()){
         instructionScreenThree();
+        ClickButton.play();
     }
 
     if(btnIPThree_R.checkClicked()){
         instructionScreentwo();
+        ClickButton.play();
     }
 }
 /* **********************
@@ -256,3 +278,4 @@ event functions END here
  ************************
 */
 main();
+window.addEventListener("load", bgm, false);
