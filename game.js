@@ -118,7 +118,7 @@ function instructionScreenOne(){
     ctx.drawImage(intruction_one, x, y, canvas.width, canvas.height);   
 }
 
-function instructionScreentwo() {
+function instructionScreenTwo() {
     ctx.drawImage(intruction_two, x, y, canvas.width, canvas.height);   
 }
 
@@ -126,9 +126,6 @@ function instructionScreenThree(){
     ctx.drawImage(intruction_three, x, y, canvas.width, canvas.height);   
 }
 
-function instructionOne(){
-    ctx.drawImage(intruction_one, x, y, canvas.width, canvas.height);   
-}
 
 function play_level_one(){
 	level_one = new Image();
@@ -233,7 +230,7 @@ function mouseClicked(event){
     }
 
     if(btnIPOne_R.checkClicked()){
-        instructionScreentwo();
+        instructionScreenTwo();
     }
 
     if(btnIPTwo_L.checkClicked()){
