@@ -7,6 +7,15 @@ var canvas,
 var start_screen = new Image();
 start_screen.src = 'images/start_screen_background2.jpg';
 
+var intruction_one = new Image();
+intruction_one.src = 'images/instruction_page_one.png';
+
+var intruction_two = new Image();
+intruction_two.src = 'images/instruction_page_two.png';
+
+var intruction_three = new Image();
+intruction_three.src = 'images/instruction_page_three.png';
+
 //var level_one = new Image();
 //level_one.src = 'images/game_board_one.png';
 
@@ -16,10 +25,23 @@ var mouseX = 0;
 var mouseY = 0;
 
 var btnPlay = new Button(97, 318, 549, 603);
-
 var btnBack = new Button(78, 149, 526, 569);
-
 var btnLevelOne = new Button(78, 149, 166, 209);
+var btnIntruction = new Button(97, 318, 640, 695);
+//intruction page one button(left)
+var btnIPOne_L= new Button(29, 98, 670, 714);
+//intruction page one button(right)
+var btnIPOne_R= new Button(315, 386, 670, 714);
+
+//intruction page two button(left)
+var btnIPTwo_L= new Button(97, 318, 549, 603);
+//intruction page two button(right)
+var btnIPTwo_R= new Button(97, 318, 549, 603);
+
+//intruction page three button(left)
+var btnIPThree_L= new Button(97, 318, 549, 603);
+//intruction page three button(right)
+var btnIPThree_R= new Button(97, 318, 549, 603);
 
 var theBall = new Button(200, 221, 402, 422);
 
@@ -32,9 +54,7 @@ function main(){
 	var y = 0;
 	
 	canvas = document.createElement('canvas');
-	
-	
-	
+
 	//create a canvas
 	width = window.innerWidth;
 	height = window.innerHeight;
@@ -42,7 +62,7 @@ function main(){
 	if(width <= 1980 || height <= 1080){
 		width = 414;
 		height = 736;
-		canvas.style.border = '10px solid #000';
+		//canvas.style.border = '10px solid #000';
 	}
 	
 	canvas.width = width;
@@ -85,6 +105,10 @@ function render(){
 main functions
 ************************
 */
+function clearCtxBg(){
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
 function play(){
 	var level_stage = new Image();
 	level_stage.src = 'images/level_page.jpg';
@@ -95,12 +119,22 @@ function startScreen(){
 	ctx.drawImage(start_screen, x, y, canvas.width, canvas.height);
 }
 
+function instructionScreenOne(){
+    ctx.drawImage(intruction_one, x, y, canvas.width, canvas.height);   
+}
+
+function instructionScreentwo() {
+    ctx.drawImage(intruction_two, x, y, canvas.width, canvas.height);   
+}
+
+function instructionOne(){
+    ctx.drawImage(intruction_one, x, y, canvas.width, canvas.height);   
+}
+
 function play_level_one(){
 	level_one = new Image();
 	level_one.src = 'images/game_board_one.png';
 	ctx.drawImage(level_one, x, y, canvas.width, canvas.height);
-
-
 
     ballX = 206;
     ballY = 411;
@@ -188,6 +222,19 @@ function mouseClicked(event){
     if(theBall.checkClicked()){
         level_one_start();
         setInterval(level_one_start, 10);
+    }
+
+    if(btnIntruction.checkClicked()){
+        instructionScreenOne();
+    }
+
+    if(btnIPOne_L.checkClicked()){
+        clearCtxBg()
+        play();
+    }
+
+    if(btnIPOne_R.checkClicked()){
+        instructionScreentwo();
     }
 }
 /* **********************
