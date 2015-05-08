@@ -10,6 +10,8 @@ start_screen.src = 'images/start_screen_background2.jpg';
 //var level_one = new Image();
 //level_one.src = 'images/game_board_one.png';
 
+var x = 0;
+var y = 0;
 var mouseX = 0;
 var mouseY = 0;
 
@@ -18,6 +20,11 @@ var btnPlay = new Button(97, 318, 549, 603);
 var btnBack = new Button(78, 149, 526, 569);
 
 var btnLevelOne = new Button(78, 149, 166, 209);
+
+var theBall = new Button(200, 221, 402, 422);
+
+var ballSpeedX = 0;
+var ballSpeedY = -5;
 
 
 function main(){
@@ -79,27 +86,17 @@ main functions
 ************************
 */
 function play(){
-	var x = 0;
-	var y = 0;
-
-	
 	var level_stage = new Image();
 	level_stage.src = 'images/level_page.jpg';
 	ctx.drawImage(level_stage, x, y, canvas.width, canvas.height);
 }
 
 function startScreen(){
-	var x = 0;
-	var y = 0;
-	
 	ctx.drawImage(start_screen, x, y, canvas.width, canvas.height);
 }
 
 function play_level_one(){
-    var x = 0;
-	var y = 0;
-
-	var level_one = new Image();
+	level_one = new Image();
 	level_one.src = 'images/game_board_one.png';
 	ctx.drawImage(level_one, x, y, canvas.width, canvas.height);
 
@@ -115,6 +112,43 @@ function play_level_one(){
 	ctx.arc(ballX,ballY,radius,startAngle,endAngle);
 	ctx.fill();
 }
+
+
+
+function level_one_start(){
+    ctx.drawImage(level_one, x, y, canvas.width, canvas.height);
+
+    ballX += ballSpeedX;
+    ballY += ballSpeedY;
+
+    ctx.beginPath();
+	ctx.arc(ballX,ballY,radius,startAngle,endAngle);
+	ctx.fill();
+
+	ball_direction();
+}
+
+function ball_direction(){
+    if(ballY <= 380){
+        tile_transform = new Image();
+	    tile_transform.src = 'images/game_board_two.png';
+	    ctx.drawImage(tile_transform, x, y, canvas.width, canvas.height);
+
+        ctx.beginPath();
+	    ctx.arc(ballX,ballY,radius,startAngle,endAngle);
+	    ctx.fill();
+
+	    direction_change();
+    }
+
+    function direction_change(){
+            if(ballY <= 140){
+                ballSpeedY = 5;
+            }
+    }
+}
+
+
 
 //end of main function
 
@@ -153,6 +187,7 @@ function mouseClicked(event){
 
     if(theBall.checkClicked()){
         level_one_start();
+        setInterval(level_one_start, 10);
     }
 }
 /* **********************
