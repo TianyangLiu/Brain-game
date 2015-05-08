@@ -78,6 +78,7 @@ button functions start here
 function play(){
 	var x = 0;
 	var y = 0;
+
 	
 	var level_stage = new Image();
 	level_stage.src = 'images/level_page.jpg';
@@ -98,6 +99,18 @@ function play_level_one(){
 	var level_one = new Image();
 	level_one.src = 'images/game_board_one.png';
 	ctx.drawImage(level_one, x, y, canvas.width, canvas.height);
+
+
+
+    ballX = 206;
+    ballY = 411;
+    radius = 10;
+	startAngle = 0;
+	endAngle = 2*Math.PI;
+
+    ctx.beginPath();
+	ctx.arc(ballX,ballY,radius,startAngle,endAngle);
+	ctx.fill();
 }
 
 
@@ -166,6 +179,10 @@ function mouseClicked(event){
 
     if(btnLevelOne.checkClicked()){
         play_level_one();
+    };
+
+    if(theBall.checkClicked()){
+        level_one_start();
     }
 }
 /* **********************
