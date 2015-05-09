@@ -139,10 +139,19 @@ function mouseClicked(e){
 	if(btnPlay.checkClicked()){
 		play();
         ClickButton.play();
+
+        btnPlay = new Button(0,0,0,0); //disable play button
+        btnIntruction = new Button(0,0,0,0);
+        btnIPOne_R= new Button(0,0,0,0);
+		btnIPTwo_R= new Button(0,0,0,0);
+		btnIPThree_R= new Button(0,0,0,0);
+		btnIPTwo_L= new Button(0,0,0,0);
 	}
 	if(btnBack.checkClicked()){
 		startScreen();
         ClickButton.play();
+
+        btnPlay = new Button(97, 318, 549, 603);
 	}
 	if(btnLevelOne.checkClicked()){
         play_level_one();
@@ -206,13 +215,11 @@ function mouseClicked(e){
 */
 function play(){
 	ctx.drawImage(level_stage, x, y, canvas.width, canvas.height);
-	
-	btnPlay = new Button(0,0,0,0); //disable play button
 }
 function startScreen(){
 	ctx.drawImage(start_screen, x, y, canvas.width, canvas.height);
 	
-	btnPlay = new Button(97, 318, 549, 603);
+	
 }
 function play_level_one(){
 	ctx.drawImage(level_one, x, y, canvas.width, canvas.height);
