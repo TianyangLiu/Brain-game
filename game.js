@@ -23,16 +23,16 @@ var level_one = new Image();
 	level_one.addEventListener('load', init, false);
 	
 var intruction_one = new Image();
-	intruction_one.src = 'images/instruction_page_one.png';
+	intruction_one.src = 'images/instruction1.png';
 	intruction_one.addEventListener('load', init, false);
 
 var intruction_two = new Image();
-	intruction_two.src = 'images/instruction_page_two.png';
+	intruction_two.src = 'images/instruction2.png';
 	intruction_two.addEventListener('load', init, false);
 	
 
 var intruction_three = new Image();
-	intruction_three.src = 'images/instruction_page_three.png';
+	intruction_three.src = 'images/instruction3.png';
 	intruction_three.addEventListener('load', init, false);
 /**
 	load all the images end here
@@ -145,13 +145,15 @@ function mouseClicked(e){
         btnIPOne_R= new Button(0,0,0,0);
 		btnIPTwo_R= new Button(0,0,0,0);
 		btnIPThree_R= new Button(0,0,0,0);
-		btnIPTwo_L= new Button(0,0,0,0);
+		btnIPTwo_L= new Button(0,0,0,0); 
 	}
 	if(btnBack.checkClicked()){
 		startScreen();
         ClickButton.play();
 
         btnPlay = new Button(97, 318, 549, 603);
+        btnIntruction = new Button(97, 318, 640, 695);
+
 	}
 	if(btnLevelOne.checkClicked()){
         play_level_one();
@@ -178,7 +180,10 @@ function mouseClicked(e){
 		
 		btnPlay = new Button(0,0,0,0);	
 		btnIntruction = new Button(0,0,0,0);
-		btnIPTwo_R= new Button(0,0,0,0);
+        btnIPOne_R= new Button(0,0,0,0);
+        btnIPTwo_R= new Button(0,0,0,0);
+		btnIPThree_R= new Button(0,0,0,0);
+        btnIPTwo_L= new Button(0,0,0,0);
 		btnLevelOne = new Button(0,0,0,0);
     }
 	if(btnIPOne_R.checkClicked()){
