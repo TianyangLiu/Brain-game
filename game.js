@@ -49,8 +49,11 @@ var HitWall = new Audio();
 HitWall.src = "music/HitWall.mp3";
 
 var bgm = new Audio();
-bgm.src = "music/.mp3";
+bgm.src = "music/bgm2.mp3";
 bgm.play();
+
+var bgm2 = new Audio();
+bgm2.src = "music/bgm3.mp3"
 // add music and sound effects end here
 
 
@@ -139,6 +142,9 @@ function mouseClicked(e){
 	if(btnPlay.checkClicked()){
 		play();
         ClickButton.play();
+        bgm.pause();
+        bgm2.play();
+
 
         btnPlay = new Button(0,0,0,0); //disable play button
         btnIntruction = new Button(0,0,0,0);
