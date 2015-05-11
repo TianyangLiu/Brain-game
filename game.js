@@ -63,14 +63,14 @@ bgm2.src = "music/bgm3.mp3"
 	button positions start here
 */
 var btnPlay = new Button(97, 318, 549, 603);
-var btnBack = new Button(78, 149, 526, 569);
+var btnStart = new Button(23, 130, 671, 713);
 var btnLevelOne = new Button(78, 149, 166, 209);
 var theBall = new Button(200, 221, 402, 422);
 var btnIntruction = new Button(97, 318, 640, 695);
-var btnIPOne_R = new Button(315, 386, 670, 714); //instruction page one button(right)
-var btnIPTwo_R = new Button(323, 392, 670, 714); //instruction page two button(right)
-var btnIPTwo_L = new Button(245, 315, 670, 714); //instruction page two button(left)
-var btnIPThree_R = new Button(320, 318, 669, 603); //instruction page three button(right)
+var btnIPOne_R = new Button(327, 392, 671, 713); //instruction page one button(right)
+var btnIPTwo_R = new Button(327, 392, 671, 713); //instruction page two button(right)
+var btnIPTwo_L = new Button(252, 317, 671, 713); //instruction page two button(left)
+var btnIPThree_R = new Button(327, 392, 671, 713); //instruction page three button(right)
 /** 
 	button positions end here
 */
@@ -135,8 +135,6 @@ function mouseClicked(e){
 	mouseX = e.pageX - canvas.offsetLeft;
 	mouseY = e.pageY - canvas.offsetTop;
 	
-	
-	
 	if(btnPlay.checkClicked()){
 		play();
         ClickButton.play();
@@ -165,6 +163,7 @@ function mouseClicked(e){
         ClickButton.play();
 		
 		btnPlay = new Button(0,0,0,0); //disable play button
+        //btnStart = new Button(0, 0, 0, 0);
         btnIntruction = new Button(0,0,0,0);
         //btnIPOne_R= new Button(0,0,0,0);
 	    btnIPTwo_R = new Button(0,0,0,0);
@@ -172,6 +171,17 @@ function mouseClicked(e){
 		btnIPTwo_L = new Button(0,0,0,0); 
 		btnLevelOne = new Button(0,0,0,0);
     }
+
+    if (btnStart.checkClicked()) { 
+        play();
+        ClickButton.play();
+        bgm.pause();
+        bgm2.play(); 
+        btnIPTwo_R = new Button(0,0,0,0);
+        btnStart = new Button(0, 0, 0, 0);
+        btnLevelOne = new Button(78, 149, 166, 209);
+    }
+
 	if(btnIPOne_R.checkClicked()){
         instructionScreenTwo();
         ClickButton.play();
@@ -180,23 +190,25 @@ function mouseClicked(e){
         btnIntruction = new Button(0,0,0,0);
         btnIPOne_R= new Button(0,0,0,0);
 	    //btnIPTwo_R = new Button(0,0,0,0);
-		//btnIPThree_R = new Button(0,0,0,0);
+		btnIPThree_R = new Button(0,0,0,0);
 		btnIPTwo_L = new Button(0,0,0,0); 
 		btnLevelOne = new Button(0,0,0,0);
-		
+        //btnIPTwo_R = new Button(327, 392, 671, 713);
     }
+
 	if(btnIPTwo_R.checkClicked()){
-        instructionScreenThree();
+        instructionScreenTwo();
         ClickButton.play();
+        
     }
 	/*if(btnIPTwo_L.checkClicked()){
         instructionScreenOne();
         ClickButton.play();	
     }*/
-	/*if(btnIPThree_R.checkClicked()){
-        instructionScreentwo();
+	if(btnIPThree_R.checkClicked()){
+        instructionScreenThree();
         ClickButton.play();
-    }*/
+    }
 
     if(btnLevelOne.checkClicked()){
         play_level_one();
