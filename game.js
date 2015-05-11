@@ -1,8 +1,4 @@
-var canvas,
-	ctx,
-	width,
-	height,
-	x = 0,
+var x = 0,
 	y = 0,
 	ballSpeedX = 0,
 	ballSpeedY = -5;
@@ -81,6 +77,7 @@ var btnIPThree_R = new Button(327, 392, 671, 713); //instruction page three butt
 
 // set up canvas
 var canvas = document.getElementById('myCanvas');
+var ctx = canvas.getContext('2d');
 
 var width = window.innerWidth;
 var height = window.innerHeight;
@@ -92,7 +89,6 @@ if(width <= 1980 || height <= 1080){
 	
 canvas.width = width;
 canvas.height = height;
-ctx = canvas.getContext('2d');
 
 	
 
@@ -141,9 +137,9 @@ function mouseClicked(e){
         bgm.pause();
         bgm2.play();
 
-
         btnPlay = new Button(0,0,0,0); //disable play button
         btnIntruction = new Button(0,0,0,0);
+        btnStart = new Button(0,0,0,0);
         btnIPOne_R= new Button(0,0,0,0);
 	    btnIPTwo_R= new Button(0,0,0,0);
 		btnIPThree_R= new Button(0,0,0,0);
@@ -163,7 +159,7 @@ function mouseClicked(e){
         ClickButton.play();
 		
 		btnPlay = new Button(0,0,0,0); //disable play button
-        //btnStart = new Button(0, 0, 0, 0);
+        //btnStart = new Button(0,0,0,0);
         btnIntruction = new Button(0,0,0,0);
         //btnIPOne_R= new Button(0,0,0,0);
 	    btnIPTwo_R = new Button(0,0,0,0);
