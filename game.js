@@ -1,8 +1,4 @@
-var canvas,
-	ctx,
-	width,
-	height,
-	x = 0,
+var x = 0,
 	y = 0,
 	ballSpeedX = 0,
 	ballSpeedY = -5;
@@ -23,16 +19,15 @@ var level_one = new Image();
 	level_one.addEventListener('load', init, false);
 	
 var intruction_one = new Image();
-	intruction_one.src = 'images/instruction_page_one.png';
+	intruction_one.src = 'images/Instruction1.png';
 	intruction_one.addEventListener('load', init, false);
 
 var intruction_two = new Image();
-	intruction_two.src = 'images/instruction_page_two.png';
+	intruction_two.src = 'images/Instruction2.png';
 	intruction_two.addEventListener('load', init, false);
-	
 
 var intruction_three = new Image();
-	intruction_three.src = 'images/instruction_page_three.png';
+	intruction_three.src = 'images/Instruction3.png';
 	intruction_three.addEventListener('load', init, false);
 /**
 	load all the images end here
@@ -65,14 +60,14 @@ bgm2.src = "music/bgm3.mp3"
 	button positions start here
 */
 var btnPlay = new Button(97, 318, 549, 603);
-var btnBack = new Button(78, 149, 526, 569);
+var btnStart = new Button(23, 130, 671, 713);
 var btnLevelOne = new Button(78, 149, 166, 209);
 var theBall = new Button(200, 221, 402, 422);
 var btnIntruction = new Button(97, 318, 640, 695);
-var btnIPOne_R= new Button(315, 386, 670, 714); //instruction page one button(right)
-var btnIPTwo_R= new Button(323, 392, 670, 714); //instruction page two button(right)
-var btnIPThree_R= new Button(320, 318, 669, 603); //instruction page three button(right)
-var btnIPTwo_L= new Button(245, 315, 670, 714); //instruction page two button(left)
+var btnIPOne_R = new Button(327, 392, 671, 713); //instruction page one button(right)
+var btnIPTwo_R = new Button(327, 392, 671, 713); //instruction page two button(right)
+var btnIPTwo_L = new Button(252, 317, 671, 713); //instruction page two button(left)
+var btnIPThree_R = new Button(327, 392, 671, 713); //instruction page three button(right)
 /** 
 	button positions end here
 */
@@ -83,6 +78,7 @@ var btnIPTwo_L= new Button(245, 315, 670, 714); //instruction page two button(le
 
 // set up canvas
 var canvas = document.getElementById('myCanvas');
+var ctx = canvas.getContext('2d');
 
 var width = window.innerWidth;
 var height = window.innerHeight;
@@ -94,7 +90,6 @@ if(width <= 1980 || height <= 1080){
 	
 canvas.width = width;
 canvas.height = height;
-ctx = canvas.getContext('2d');
 
 	
 
@@ -111,7 +106,6 @@ function init(){
 function run(){
 	ctx.drawImage(start_screen, x, y, canvas.width, canvas.height);
 }
-
 
 
 function Button(xL, xR, yT, yB){
@@ -138,8 +132,6 @@ function mouseClicked(e){
 	mouseX = e.pageX - canvas.offsetLeft;
 	mouseY = e.pageY - canvas.offsetTop;
 	
-	
-	
 	if(btnPlay.checkClicked()){
 		play();
         ClickButton.play();
@@ -148,21 +140,76 @@ function mouseClicked(e){
         bgm2.loop = true;
         
 
-
         btnPlay = new Button(0,0,0,0); //disable play button
         btnIntruction = new Button(0,0,0,0);
+        btnStart = new Button(0,0,0,0);
         btnIPOne_R= new Button(0,0,0,0);
-		btnIPTwo_R= new Button(0,0,0,0);
+	    btnIPTwo_R= new Button(0,0,0,0);
 		btnIPThree_R= new Button(0,0,0,0);
-		btnIPTwo_L= new Button(0,0,0,0);
+		btnIPTwo_L= new Button(0,0,0,0); 
 	}
-	if(btnBack.checkClicked()){
+	/*if(btnBack.checkClicked()){
 		startScreen();
         ClickButton.play();
         
         btnPlay = new Button(97, 318, 549, 603);
-	}
-	if(btnLevelOne.checkClicked()){
+        btnIntruction = new Button(97, 318, 640, 695);
+
+	}*/
+
+	if(btnIntruction.checkClicked()){
+        instructionScreenOne();
+        ClickButton.play();
+		
+		btnPlay = new Button(0,0,0,0); //disable play button
+        //btnStart = new Button(0,0,0,0);
+        btnIntruction = new Button(0,0,0,0);
+        //btnIPOne_R= new Button(0,0,0,0);
+	    btnIPTwo_R = new Button(0,0,0,0);
+		btnIPThree_R = new Button(0,0,0,0);
+		btnIPTwo_L = new Button(0,0,0,0); 
+		btnLevelOne = new Button(0,0,0,0);
+    }
+
+    if (btnStart.checkClicked()) { 
+        play();
+        ClickButton.play();
+        bgm.pause();
+        bgm2.play(); 
+        btnIPTwo_R = new Button(0,0,0,0);
+        btnStart = new Button(0, 0, 0, 0);
+        btnLevelOne = new Button(78, 149, 166, 209);
+    }
+
+	if(btnIPOne_R.checkClicked()){
+        instructionScreenTwo();
+        ClickButton.play();
+
+        btnPlay = new Button(0,0,0,0); //disable play button
+        btnIntruction = new Button(0,0,0,0);
+        btnIPOne_R= new Button(0,0,0,0);
+	    //btnIPTwo_R = new Button(0,0,0,0);
+		btnIPThree_R = new Button(0,0,0,0);
+		btnIPTwo_L = new Button(0,0,0,0); 
+		btnLevelOne = new Button(0,0,0,0);
+        //btnIPTwo_R = new Button(327, 392, 671, 713);
+    }
+
+	if(btnIPTwo_R.checkClicked()){
+        instructionScreenTwo();
+        ClickButton.play();
+        
+    }
+	/*if(btnIPTwo_L.checkClicked()){
+        instructionScreenOne();
+        ClickButton.play();	
+    }*/
+	if(btnIPThree_R.checkClicked()){
+        instructionScreenThree();
+        ClickButton.play();
+    }
+
+    if(btnLevelOne.checkClicked()){
         play_level_one();
         ClickButton.play();
 		
@@ -179,35 +226,6 @@ function mouseClicked(e){
 	if(theBall.checkClicked()){
         level_one_start();
         setInterval(level_one_start, 15);
-        ClickButton.play();
-    }
-	if(btnIntruction.checkClicked()){
-        instructionScreenOne();
-        ClickButton.play();
-		
-		btnPlay = new Button(0,0,0,0);	
-		btnIntruction = new Button(0,0,0,0);
-		btnIPTwo_R= new Button(0,0,0,0);
-		btnLevelOne = new Button(0,0,0,0);
-    }
-	if(btnIPOne_R.checkClicked()){
-        instructionScreenTwo();
-        ClickButton.play();
-		
-		btnIPTwo_R= new Button(323, 392, 670, 714);
-    }
-	if(btnIPTwo_R.checkClicked()){
-        instructionScreenThree();
-        ClickButton.play();
-    }
-	if(btnIPTwo_L.checkClicked()){
-        instructionScreenOne();
-        ClickButton.play();
-		
-		
-    }
-	if(btnIPThree_R.checkClicked()){
-        instructionScreentwo();
         ClickButton.play();
     }
 }
