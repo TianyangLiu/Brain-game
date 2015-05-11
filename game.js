@@ -51,8 +51,9 @@ HitWall.src = "music/HitWall.mp3";
 var bgm = new Audio();
 bgm.src = "music/bgm2.mp3";
 bgm.play();
-
+bgm.loop = true;
 var bgm2 = new Audio();
+
 bgm2.src = "music/bgm3.mp3"
 // add music and sound effects end here
 
@@ -144,6 +145,8 @@ function mouseClicked(e){
         ClickButton.play();
         bgm.pause();
         bgm2.play();
+        bgm2.loop = true;
+        
 
 
         btnPlay = new Button(0,0,0,0); //disable play button
@@ -156,7 +159,7 @@ function mouseClicked(e){
 	if(btnBack.checkClicked()){
 		startScreen();
         ClickButton.play();
-
+        
         btnPlay = new Button(97, 318, 549, 603);
 	}
 	if(btnLevelOne.checkClicked()){
