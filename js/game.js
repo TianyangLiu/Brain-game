@@ -52,4 +52,9 @@ $('#levelOneBtn').click( function() {
 	$('#gameScreen').show();
 });
 
+$('#leftArrow2').click( function() {
+	$('#level_selection').hide();
+	$('#start_screen').show();
+});
+
 
