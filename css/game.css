@@ -1,0 +1,153 @@
+/* start screen */
+#startBG{
+	position: absolute;
+}
+
+#playBtn{
+	position: absolute;
+	top: 550px;
+	left: 100px;
+}
+
+#playBtn:hover{
+	-webkit-transform:scale(1.25); /* Safari and Chrome */
+	-moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+     transform:scale(1.25);
+}
+
+#instructionBtn{
+	position: absolute;
+	top: 650px;
+	left: 100px;
+}
+
+#instructionBtn:hover{
+	-webkit-transform:scale(1.25); /* Safari and Chrome */
+	-moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+     transform:scale(1.25);
+}
+
+
+
+
+
+/* buttons on instruction pages */
+.startGame{
+	position: absolute;
+	top: 675px;
+	left: 29px;
+}
+
+.startGame:hover{
+	-webkit-transform:scale(1.25); /* Safari and Chrome */
+	-moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+     transform:scale(1.25);
+}
+
+/* instruction 1 */
+#instructionOne{
+	display: none;
+}
+
+#rightArrow1{
+	position: absolute;
+	top: 680px;
+	left: 330px;
+}
+
+#rightArrow1:hover{
+	-webkit-transform:scale(1.25); /* Safari and Chrome */
+	-moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+     transform:scale(1.25);
+}
+
+
+/* instruction 2 */
+#instructionTwo{
+	display: none;
+}
+
+#rightArrow2{
+	position: absolute;
+	top: 680px;
+	left: 330px;
+}
+
+#rightArrow2:hover{
+	-webkit-transform:scale(1.25); /* Safari and Chrome */
+	-moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+     transform:scale(1.25);
+}
+
+#leftArrow{
+	position: absolute;
+	top: 680px;
+	left: 255px;
+}
+
+#leftArrow:hover{
+	-webkit-transform:scale(1.25); /* Safari and Chrome */
+	-moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+     transform:scale(1.25);
+}
+
+/* instruction 3 */
+#instructionThree{
+	display: none;
+}
+
+#leftArrow3{
+	position: absolute;
+	top: 680px;
+	left: 330px;
+}
+
+#leftArrow3:hover{
+	-webkit-transform:scale(1.25); /* Safari and Chrome */
+	-moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+     transform:scale(1.25);
+}
+
+
+/* level selection page */
+#level_selection{
+	display: none;
+}
+
+#levelOneBtn{
+	position: absolute;
+	top: 200px;
+	left: 100px;
+}
+
+#levelOneBtn:hover{
+	-webkit-transform:scale(1.25); /* Safari and Chrome */
+	-moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+     transform:scale(1.25);
+}
+
+
+
+/* game screen */
+#gameScreen{
+	display: none;
+}
+
+
+
