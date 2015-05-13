@@ -177,3 +177,19 @@ body{
     position: absolute;
     display: none;
 }
+
+
+#drag {
+    position: absolute;
+    top: 200px;
+    left: 20px;
+}
+
+#drop {
+    position: absolute;
+    top: 200px;
+    left: 100px;
+    width: 65px;
+	height: 65px;
+    border: 1px solid;
+}

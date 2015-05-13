@@ -83,6 +83,7 @@ $(function(){
     $('#levelOneBtn').click( function() {
 	    $('#level_selection').hide();
 	    $('#gameScreen').show();
+        level1()
         ion.sound.play("click_button");
         ion.sound.play("gamebg");//new game sound starts
         ion.sound.stop("startbg");
@@ -93,5 +94,46 @@ $(function(){
 	    $('#start_screen').show();
         ion.sound.play("click_button");
     });
+
+    function level1(){
+        $("#drag").draggable({
+            containment: 'document',
+            cursor: 'pointer',
+            opacity: 1.5,
+			revert: function(event,ui){
+				//for jQuery 1.9 version 'uiDraggable' 
+				//for older jQuery 'draggable'
+			    $(this).data("uiDraggable").originalPosition={
+			       	top:200+"px",
+			       	left:20+"px",
+			    }; return !event;	
+			}
+		});
+
+        $("#drop").droppable({
+            hoverClass: 'border',
+	        tolerance:'intersect',
+		    drop: function(event,ui){  
+		    //$(this).droppable('option','accept',ui.draggable);
+		    var drop_p = $(this).offset();
+		    var drag_p = ui.draggable.offset();
+		    var left_end = drop_p.left - drag_p.left - 17;
+		    var top_end = drop_p.top - drag_p.top - 17;
+		    ui.draggable.animate({
+			    top: '+=' + top_end,
+			    left: '+=' + left_end,
+            });
+
+		    //play sound after placing
+		    //ion.sound.play("got_item");	
+
+		    x =ui.draggable.text();
+		    $(this).attr("value",x);
+	        },
+		    //out:function(event,ui){
+		    //$(this).droppable('option','accept','.drag-digit');
+		    //}
+	    });
+    }
 
 });
