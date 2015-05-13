@@ -1,8 +1,12 @@
-/* start screen */
-#startBG{
-	position: absolute;
+body{
+    background: #303030;
 }
 
+
+div img {
+    margin: 100px 40% 100px;
+}
+/* start screen */
 #playBtn{
 	position: absolute;
 	top: 550px;
