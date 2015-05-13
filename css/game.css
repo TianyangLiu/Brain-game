@@ -3,13 +3,20 @@ body{
 }
 
 
-div img {
-    margin: 100px 40% 100px;
+#content{
+    text-align: center;
+    width: 414px;
+    margin: 100px auto 100px;
 }
+
 /* start screen */
+#start_screen {
+    position: absolute;
+}
+
 #playBtn{
 	position: absolute;
-	top: 550px;
+    top: 570px;
 	left: 100px;
 }
 
@@ -42,8 +49,8 @@ div img {
 /* buttons on instruction pages */
 .startGame{
 	position: absolute;
-	top: 675px;
-	left: 29px;
+	top: 668px;
+	left: 26px;
 }
 
 .startGame:hover{
@@ -55,14 +62,15 @@ div img {
 }
 
 /* instruction 1 */
-#instructionOne{
-	display: none;
+#instructionOne {
+    position: absolute;
+    display: none;
 }
 
 #rightArrow1{
 	position: absolute;
-	top: 680px;
-	left: 330px;
+	top: 670px;
+	left: 323px;
 }
 
 #rightArrow1:hover{
@@ -75,14 +83,15 @@ div img {
 
 
 /* instruction 2 */
-#instructionTwo{
-	display: none;
+#instructionTwo {
+    position: absolute;
+    display: none;
 }
 
 #rightArrow2{
 	position: absolute;
-	top: 680px;
-	left: 330px;
+	top: 670px;
+	left: 323px;
 }
 
 #rightArrow2:hover{
@@ -95,8 +104,8 @@ div img {
 
 #leftArrow{
 	position: absolute;
-	top: 680px;
-	left: 255px;
+	top: 670px;
+	left: 248px;
 }
 
 #leftArrow:hover{
@@ -108,14 +117,15 @@ div img {
 }
 
 /* instruction 3 */
-#instructionThree{
-	display: none;
+#instructionThree {
+    position: absolute;
+    display: none;
 }
 
 #leftArrow3{
 	position: absolute;
-	top: 680px;
-	left: 330px;
+	top: 670px;
+	left: 320px;
 }
 
 #leftArrow3:hover{
@@ -128,8 +138,9 @@ div img {
 
 
 /* level selection page */
-#level_selection{
-	display: none;
+#level_selection {
+    position: absolute;
+    display: none;
 }
 
 #levelOneBtn{
@@ -162,9 +173,7 @@ div img {
 
 
 /* game screen */
-#gameScreen{
-	display: none;
+#gameScreen {
+    position: absolute;
+    display: none;
 }
-
-
-
