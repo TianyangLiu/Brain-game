@@ -245,6 +245,11 @@ $(function(){
                     ballDX = 5;
                     ballDY = 0;
                 }
+                if(ball.style.top == 135 + 'px' && ball.style.left == 300 + 'px'){
+                    ballDX = 0;
+                    ballDY = 0;
+                    $('#winningScreen').show();
+                }
             }
         
         }

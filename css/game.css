@@ -18,8 +18,8 @@ body{
 
 #playBtn{
 	position: absolute;
-    top: 570px;
-	left: 100px;
+    top: 520px;
+	left: 80px;
 }
 
 #playBtn:hover{
@@ -32,11 +32,25 @@ body{
 
 #instructionBtn{
 	position: absolute;
-	top: 650px;
-	left: 100px;
+	top: 590px;
+	left: 80px;
 }
 
 #instructionBtn:hover{
+	-webkit-transform:scale(1.25); /* Safari and Chrome */
+	-moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+     transform:scale(1.25);
+}
+
+#leaderboardBtn{
+    position: absolute;
+    top: 660px;
+    left: 80px;
+}
+
+#leaderboardBtn:hover{
 	-webkit-transform:scale(1.25); /* Safari and Chrome */
 	-moz-transform:scale(1.25); /* Firefox */
     -ms-transform:scale(1.25); /* IE 9 */
@@ -186,7 +200,15 @@ body{
 
 #ball{
     position: absolute;
-    z-index: 2;
+    z-index: 1;
+}
+
+#ball:hover{
+	-webkit-transform:scale(1.25); /* Safari and Chrome */
+	-moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+     transform:scale(1.25);
 }
 
 #drag {
@@ -242,4 +264,16 @@ body{
 
 table{
     border-collapse: collapse;
+}
+
+#winningScreen{
+    position: absolute;
+    display: none;
+    z-index: 2;
+}
+
+#win{
+    position: absolute;
+    top: 200px;
+    left: 30px;
 }
