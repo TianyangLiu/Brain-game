@@ -173,13 +173,13 @@ body{
      transform:scale(1.25);
 }
 
-#leftArrow2{
+.leftArrow2{
 	position: absolute;
 	top: 530px;
 	left: 100px;
 }
 
-#leftArrow2:hover{
+.leftArrow2:hover{
 	-webkit-transform:scale(1.25); /* Safari and Chrome */
 	-moz-transform:scale(1.25); /* Firefox */
     -ms-transform:scale(1.25); /* IE 9 */
@@ -276,4 +276,13 @@ table{
     position: absolute;
     top: 200px;
     left: 30px;
+}
+
+#leaderboard{
+    position: absolute;
+    display: none;
+}
+
+#leaderboardScroll{
+    position: absolute;
 }

@@ -46,6 +46,13 @@ $(function(){
         ion.sound.play("click_button");
     });
 
+    // leaderboard page
+    $('#leaderboardBtn').click( function() {
+	    $('#leaderboard').show();
+        $('#leftArrow2').show();
+        ion.sound.play("click_button");
+    });
+
 
     // start button on instruction page one
     $('.startGame').click( function() {
@@ -97,8 +104,9 @@ $(function(){
         drag_drop();
     });
 
-    $('#leftArrow2').click( function() {
+    $('.leftArrow2').click( function() {
 	    $('#level_selection').hide();
+        $('#leaderboard').hide();
 	    $('#start_screen').show();
         ion.sound.play("click_button");
     });
