@@ -1,5 +1,7 @@
 body{
     background: #303030;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -42,7 +44,7 @@ body{
      transform:scale(1.25);
 }
 
-
+/*timer with 60 seconds*/
 
 
 
@@ -181,15 +183,55 @@ body{
 
 #drag {
     position: absolute;
-    top: 200px;
-    left: 20px;
+    top: 530px;
+    left: 70px;
 }
 
 #drop {
     position: absolute;
     top: 200px;
-    left: 100px;
-    width: 65px;
-	height: 65px;
-    border: 1px solid;
+    left: 80px;
+}
+
+.drag-digit span{
+	margin-right: 6px;
+    color: white;
+}
+
+.drag-digit{
+	padding: 65px 0px 0px 65px;
+	cursor: pointer;
+}
+
+.drop-digit{
+    border: 5px solid black;
+    padding: 30px;
+}
+
+.obstacle1 {
+    background-image: url(../images/obstacles/Stone_Object_Left.png);
+}
+
+.obstacle2 {
+    background-image: url(../images/obstacles/Glass_Object_Left.png);
+}
+
+.obstacle3 {
+    background-image: url(../images/obstacles/Wood_Object_Left.png);
+}
+
+.obstacle4 {
+    background-image: url(../images/obstacles/Stone_Object_Right.png);
+}
+
+.obstacle5 {
+    background-image: url(../images/obstacles/Glass_Object_Right.png);
+}
+.obstacle6 {
+    background-image: url(../images/obstacles/Wood_Object_Right.png);
+}
+
+
+table{
+    border-collapse: collapse;
 }

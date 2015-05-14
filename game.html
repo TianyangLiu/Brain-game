@@ -4,7 +4,21 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Angry ball</title>
-	<link rel="stylesheet" type="text/css" href="css/game.css"></link>
+
+    <link rel="stylesheet" type="text/css" href="css/ui-lightness/jquery-ui-1.9.2.custom.css">
+    <link rel="stylesheet" type="text/css" href="css/ui-lightness/jquery-ui-1.9.2.custom.min.css">
+
+    <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.js"></script>
+
+	<script type="text/javascript" src="js/ion.sound.js"></script>
+	<script type="text/javascript" src="js/ion.sound.min.js"></script>
+	<script type="text/javascript" src="js/jquery.ion.sound.js"></script>
+	<script type="text/javascript" src="js/jquery.ion.sound.min.js"></script>
+
+    <!-- custom javascript file-->
+    <script type="text/javascript" src="js/game.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/game.css"></link>
 </head>
 
 <body>
@@ -42,20 +56,44 @@
 	
 	<div id="gameScreen">
 		<div id="gameScreenBg"><img src="images/gameScreen.jpg"></img></div>
-        <div id="drag"><img src="images/obstacles/Stone_Object_Right.png" alt="stone obstacle"></img></div>
-	    <div id="drop"></div>
+        <div id="min">0<span>:</span></div>
+        <div id="sec">0</div>
+
+        <!-- draggable abstacl -->
+        <table id="drag">
+            <tr>
+                <td>   <div class="drag-digit obstacle1"><span>0</span></div>  </td>
+                <td>   <div class="drag-digit obstacle2"><span>0</span></div>  </td>
+                <td>   <div class="drag-digit obstacle3"><span>0</span></div>  </td>
+            </tr>
+            <tr>
+                <td>   <div class="drag-digit obstacle4"><span>0</span></div>  </td>
+                <td>   <div class="drag-digit obstacle5"><span>0</span></div>  </td>
+                <td>   <div class="drag-digit obstacle6"><span>0</span></div>  </td>
+            </tr>
+        </table>
+
+        <!-- droppables tiles  -->	
+		<table id="drop">
+			<tr>
+				<td>	<div class="drop-digit tile" id="drop1" value="0">  </div>	</td>
+				<td>	<div class="drop-digit tile" id="drop2" value="0">	</div>	</td>
+				<td>	<div class="drop-digit tile" id="drop3" value="0">  </div>  </td>
+            </tr>
+            <tr>
+				<td>	<div class="drop-digit tile" id="drop4" value="0">  </div>	</td>
+                <td>	<div class="drop-digit tile" id="drop5" value="0">	</div>	</td>
+				<td>	<div class="drop-digit tile" id="drop6" value="0">	</div>	</td>
+            </tr>
+            <tr>
+				<td>	<div class="drop-digit tile" id="drop7" value="0">  </div>  </td>
+				<td>	<div class="drop-digit tile" id="drop8" value="0">  </div>	</td>
+                <td>	<div class="drop-digit tile" id="drop9" value="0">  </div>	</td>	
+			</tr>
+		</table>	
 	</div>
 
     </div>
-
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/jquery-ui.js"></script>
-	<script type="text/javascript" src="js/game.js"></script>
-
-	<script type="text/javascript" src="js/ion.sound.js"></script>
-	<script type="text/javascript" src="js/ion.sound.min.js"></script>
-	<script type="text/javascript" src="js/jquery.ion.sound.js"></script>
-	<script type="text/javascript" src="js/jquery.ion.sound.min.js"></script>
 </body>
 
 </html>

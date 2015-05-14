@@ -16,13 +16,24 @@ $(function(){
 			volume: 0.9,
 			loop: 900000,
 		},
+        {
+			name:"beep",
+			volume: 0.9,
+		},
 	    ],
 		volume: 0.5,
 		path: "sounds/",
 		preload: true
 	});
 
-		ion.sound.play("startbg");
+	ion.sound.play("startbg");
+
+    //disable text selection from web page
+	$("body").css("-webkit-user-select","none");
+	$("body").css("-moz-user-select","none");
+	$("body").css("-ms-user-select","none");
+	$("body").css("-o-user-select","none");
+	$("body").css("user-select","none");
 
     // start screen
     $('#playBtn').click( function() {
@@ -83,6 +94,7 @@ $(function(){
     $('#levelOneBtn').click( function() {
 	    $('#level_selection').hide();
 	    $('#gameScreen').show();
+        countTimer();
         level1()
         ion.sound.play("click_button");
         ion.sound.play("gamebg");//new game sound starts
@@ -95,45 +107,41 @@ $(function(){
         ion.sound.play("click_button");
     });
 
-    function level1(){
-        $("#drag").draggable({
-            containment: 'document',
-            cursor: 'pointer',
-            opacity: 1.5,
+    $(".drag-digit").draggable({
 			revert: function(event,ui){
 				//for jQuery 1.9 version 'uiDraggable' 
 				//for older jQuery 'draggable'
 			    $(this).data("uiDraggable").originalPosition={
-			       	top:200+"px",
-			       	left:20+"px",
+			       	top:0,
+			       	left:0
 			    }; return !event;	
 			}
 		});
 
-        $("#drop").droppable({
-            hoverClass: 'border',
-	        tolerance:'intersect',
-		    drop: function(event,ui){  
-		    //$(this).droppable('option','accept',ui.draggable);
-		    var drop_p = $(this).offset();
-		    var drag_p = ui.draggable.offset();
-		    var left_end = drop_p.left - drag_p.left - 17;
-		    var top_end = drop_p.top - drag_p.top - 17;
-		    ui.draggable.animate({
-			    top: '+=' + top_end,
-			    left: '+=' + left_end,
-            });
 
-		    //play sound after placing
-		    //ion.sound.play("got_item");	
+		/* droppable function */
+		$(".drop-digit").droppable({
+				tolerance:'intersect',
+			drop: function(event,ui){  
+				$(this).droppable('option','accept',ui.draggable);
+				var drop_p = $(this).offset();
+				var drag_p = ui.draggable.offset();
+				var left_end = drop_p.left - drag_p.left + 1;
+				var top_end = drop_p.top - drag_p.top + 1;
+				ui.draggable.animate({
+					top: '+=' + top_end,
+					left: '+=' + left_end,
+				});
 
-		    x =ui.draggable.text();
-		    $(this).attr("value",x);
-	        },
-		    //out:function(event,ui){
-		    //$(this).droppable('option','accept','.drag-digit');
-		    //}
-	    });
-    }
+				//play sound after placing leaf number
+				//ion.sound.play("got_item");	
+
+				x =ui.draggable.text();
+				$(this).attr("value",x);
+			},
+			out:function(event,ui){
+			$(this).droppable('option','accept','.drag-digit');
+			}
+		});
 
 });
