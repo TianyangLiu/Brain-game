@@ -16,10 +16,6 @@ $(function(){
 			volume: 0.9,
 			loop: 900000,
 		},
-        {
-			name:"beep",
-			volume: 0.9,
-		},
 	    ],
 		volume: 0.5,
 		path: "sounds/",
@@ -94,11 +90,10 @@ $(function(){
     $('#levelOneBtn').click( function() {
 	    $('#level_selection').hide();
 	    $('#gameScreen').show();
-        countTimer();
-        level1()
         ion.sound.play("click_button");
         ion.sound.play("gamebg");//new game sound starts
         ion.sound.stop("startbg");
+        init();
     });
 
     $('#leftArrow2').click( function() {
@@ -126,15 +121,12 @@ $(function(){
 				$(this).droppable('option','accept',ui.draggable);
 				var drop_p = $(this).offset();
 				var drag_p = ui.draggable.offset();
-				var left_end = drop_p.left - drag_p.left + 1;
-				var top_end = drop_p.top - drag_p.top + 1;
+				var left_end = drop_p.left - drag_p.left - 5;
+				var top_end = drop_p.top - drag_p.top - 5;
 				ui.draggable.animate({
 					top: '+=' + top_end,
 					left: '+=' + left_end,
 				});
-
-				//play sound after placing leaf number
-				//ion.sound.play("got_item");	
 
 				x =ui.draggable.text();
 				$(this).attr("value",x);
@@ -143,5 +135,68 @@ $(function(){
 			$(this).droppable('option','accept','.drag-digit');
 			}
 		});
+
+        // a basic ball animation test
+        // var ballAngle = 90 + 'px';
+        var ballWidth = 20 + 'px';
+        var ballHeight = 20 + 'px';
+
+        var ballDivWidth = 270 + 'px';
+        var ballDivHeight = 350 + 'px';
+        var ballDivTop = 90 + 'px';
+
+        var x = 120 + 'px'; // ball x position
+        var y = 300 + 'px'; // ball y position
+
+        var ballDX = 0;
+        var ballDY = -5;
+
+        var up = false // determine the coming direction of the ball
+        var left = false // determine the coming direction of the ball
+        var down = false // determine the coming direction of the ball
+        var right = false // determine the coming direction of the ball
+
+        var gameOn = true;
+
+
+        $('#ball').click( function() {
+            if(gameOn){
+                timer = setInterval(move, 10);
+            }
+            ion.sound.play("click_button");
+        });
+
+
+        function init(){
+            ballDiv.style.width = ballDivWidth;
+            ballDiv.style.height = ballDivHeight;
+            ballDiv.style.top = ballDivTop;
+
+            ball.style.width = ballWidth;
+            ball.style.height = ballHeight;
+            ball.style.top = y;
+            ball.style.left = x;
+        }
+
+        function move(){
+            ball.style.top = parseInt(ball.style.top) + ballDY + 'px';
+            if(ball.style.top < 270 + 'px') {
+                ballDivHeight = 270 + 'px';
+                ballDiv.style.height = ballDivHeight;
+                determination();
+            }
+
+            function determination(){
+                if(ball.style.top <= 0 + 'px'){
+                    ballDY = 5;
+                }
+                if(ball.style.top >= 260 + 'px'){
+                    ballDY = -5;
+                }
+            }
+        
+        }
+
+
 
 });
