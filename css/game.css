@@ -182,8 +182,6 @@ body{
 
 #ballDiv{
     position: absolute;
-    border: solid;
-    left: 80px;
 }
 
 #ball{
@@ -200,7 +198,7 @@ body{
 #drop {
     position: absolute;
     top: 90px;
-    left: 80px;
+    left: 70px;
 }
 
 .drag-digit span{

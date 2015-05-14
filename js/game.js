@@ -188,8 +188,9 @@ $(function(){
         var ballDivWidth = 270 + 'px';
         var ballDivHeight = 350 + 'px';
         var ballDivTop = 90 + 'px';
+        var ballDivLeft = 70 + 'px';
 
-        var x = 120 + 'px'; // ball x position
+        var x = 125 + 'px'; // ball x position
         var y = 300 + 'px'; // ball y position
 
         var ballDX = 0;
@@ -202,7 +203,7 @@ $(function(){
 
         var gameOn = true;
 
-        var box5 = {x: 135, y: 135, inBox: 0};
+        var box5 = {x: 125, y: 135, inBox: 0};
 
         $('#ball').click( function() {
             if(gameOn){
@@ -216,6 +217,7 @@ $(function(){
             ballDiv.style.width = ballDivWidth;
             ballDiv.style.height = ballDivHeight;
             ballDiv.style.top = ballDivTop;
+            ballDiv.style.left = ballDivLeft;
 
             ball.style.width = ballWidth;
             ball.style.height = ballHeight;
@@ -239,7 +241,7 @@ $(function(){
                 if(ball.style.top >= 260 + 'px'){
                     ballDY = -5;
                 }
-                if(ball.style.top <= box5.y + 'px' && box5.inBox == 1){
+                if(ball.style.top <= box5.y + 'px' && box5.inBox == 1 && ball.style.left == box5.x + 'px'){
                     ballDX = 5;
                     ballDY = 0;
                 }
