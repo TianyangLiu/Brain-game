@@ -94,6 +94,7 @@ $(function(){
         ion.sound.play("gamebg");//new game sound starts
         ion.sound.stop("startbg");
         init();
+        drag_drop();
     });
 
     $('#leftArrow2').click( function() {
@@ -102,22 +103,36 @@ $(function(){
         ion.sound.play("click_button");
     });
 
+
+
+
+
+
+
+
+
+
+
+
+
+    function drag_drop(){
+
     $(".drag-digit").draggable({
-			revert: function(event,ui){
-				//for jQuery 1.9 version 'uiDraggable' 
-				//for older jQuery 'draggable'
-			    $(this).data("uiDraggable").originalPosition={
-			       	top:0,
-			       	left:0
-			    }; return !event;	
-			}
-		});
+		revert: function(event,ui){
+		    //for jQuery 1.9 version 'uiDraggable' 
+		    //for older jQuery 'draggable'
+		    $(this).data("uiDraggable").originalPosition={
+		    top:0,
+		    left:0
+		    }; return !event;
+		}
+	});
 
 
 		/* droppable function */
 		$(".drop-digit").droppable({
 				tolerance:'intersect',
-			drop: function(event,ui){  
+			drop: function(event,ui){
 				$(this).droppable('option','accept',ui.draggable);
 				var drop_p = $(this).offset();
 				var drag_p = ui.draggable.offset();
@@ -132,9 +147,38 @@ $(function(){
 				$(this).attr("value",x);
 			},
 			out:function(event,ui){
-			$(this).droppable('option','accept','.drag-digit');
+			    $(this).droppable('option','accept','.drag-digit');
+                checkInBox();
 			}
 		});
+
+            
+        }
+
+
+
+
+
+
+
+        function checkInBox(){
+            box5.inBox = 1;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // a basic ball animation test
         // var ballAngle = 90 + 'px';
@@ -158,6 +202,7 @@ $(function(){
 
         var gameOn = true;
 
+        var box5 = {x: 135, y: 135, inBox: 0};
 
         $('#ball').click( function() {
             if(gameOn){
@@ -180,6 +225,7 @@ $(function(){
 
         function move(){
             ball.style.top = parseInt(ball.style.top) + ballDY + 'px';
+            ball.style.left = parseInt(ball.style.left) + ballDX + 'px';
             if(ball.style.top < 270 + 'px') {
                 ballDivHeight = 270 + 'px';
                 ballDiv.style.height = ballDivHeight;
@@ -192,6 +238,10 @@ $(function(){
                 }
                 if(ball.style.top >= 260 + 'px'){
                     ballDY = -5;
+                }
+                if(ball.style.top <= box5.y + 'px' && box5.inBox == 1){
+                    ballDX = 5;
+                    ballDY = 0;
                 }
             }
         
