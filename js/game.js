@@ -157,36 +157,24 @@ $(function(){
 			out:function(event,ui){
 			    $(this).droppable('option','accept','.drag-digit');
                 checkInBox();
+                checkDrag();
 			}
 		});
 
             
         }
 
-
-
-
-
-
-
+        // check if the ball should turn at the fifth box
         function checkInBox(){
-            if(obstacle4.style.left >= 20 + 'px'){
+            if(obstacle4.style.left >= 20 + 'px' && obstacle4.style.width <=10 + 'px'){
                box5.inBox = 1; 
             }
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
+        function checkDrag(){
+            gameOn = true;
+        }
 
 
 
@@ -211,7 +199,7 @@ $(function(){
         var down = false // determine the coming direction of the ball
         var right = false // determine the coming direction of the ball
 
-        var gameOn = true;
+        var gameOn = false;
 
         var box5 = {x: 125, y: 135, inBox: 0};
 
