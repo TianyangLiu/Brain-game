@@ -17,6 +17,7 @@
 	<script type="text/javascript" src="js/jquery.ion.sound.min.js"></script>
 
     <!-- custom javascript file-->
+    <script type="text/javascript" src="js/leaderboard.js"></script>
     <script type="text/javascript" src="js/game.js"></script>
     <link rel="stylesheet" type="text/css" href="css/game.css"></link>
 </head>
@@ -94,11 +95,17 @@
 	</div>
 
     <div id="winningScreen">
+            <div id="formContainer">
+                <form id="form" name="form" onsubmit="return sendData()">
+		            Enter Username:<input id="userId" name="userId" type="text"  />
+		            <input id="submit" name="submit" type="submit" style="display: none" />
+	            </form>   
+            </div>
             <div id="win"><img src="images/winningScreen.png"></img></div>
     </div>
 
     <div id="leaderboard">
-        <div id="leaderboardScroll"><img src="images/leaderboard.png"></img></div>
+        <div id="leaderboardScroll"></div>
         <div class="leftArrow2"><img src="images/buttons/leftArrow.png"></img></div>
     </div>
 
