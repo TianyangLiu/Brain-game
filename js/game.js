@@ -170,7 +170,9 @@ $(function(){
 
 
         function checkInBox(){
-            box5.inBox = 1;
+            if(obstacle4.style.left >= 20 + 'px'){
+               box5.inBox = 1; 
+            }
         }
 
 
@@ -212,6 +214,8 @@ $(function(){
         var gameOn = true;
 
         var box5 = {x: 125, y: 135, inBox: 0};
+
+        var score = 0;
 
         $('#ball').click( function() {
             if(gameOn){
