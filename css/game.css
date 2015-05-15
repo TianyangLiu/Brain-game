@@ -301,3 +301,10 @@ table{
     left: 120px;
     z-index: 2;
 }
+#timer_out{
+    position: absolute;
+    top: 60px;
+    left:  280px;
+    font-size:  30px;
+    color:  #0094ff
+}
