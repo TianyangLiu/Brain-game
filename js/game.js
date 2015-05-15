@@ -203,8 +203,6 @@ $(function(){
 
         var box5 = {x: 125, y: 135, inBox: 0};
 
-        var score = 0;
-
         $('#ball').click( function() {
             if(gameOn){
                 timer = setInterval(move, 10);
@@ -254,6 +252,10 @@ $(function(){
         
         }
 
-
+        $('#submit').click( function(){
+            $('#win').hide();
+            $('#formContainer').hide();
+            $('#leaderboard').show();
+        });
 
 });
