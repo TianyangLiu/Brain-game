@@ -1,4 +1,4 @@
-$.ajax({ url: "https://api.mongolab.com/api/1/databases/comp2910/collections/leaderboard?f={%27_id%27:0}&s={%27score%27:1}&l=10&apiKey=m62xZhBH7kLiSw-6xFKTS87LCi1QQ3lJ",
+$.ajax({ url: "https://api.mongolab.com/api/1/databases/comp2910/collections/leaderboard?f={%27_id%27:0}f={%27username%27:1,%27score%27:1}s={%27score%27:1}&l=10&apiKey=m62xZhBH7kLiSw-6xFKTS87LCi1QQ3lJ",
 	type: "GET",
 	contentType: "application/json",
 	success: function(data) {
@@ -22,5 +22,7 @@ function sendData() {
 		type: "POST",
 		contentType: "application/json"
 	});
+    $('#winningScreen').hide();
+	$('#leaderBoard').show();
 	return false;
 }
