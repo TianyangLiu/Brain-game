@@ -15,7 +15,8 @@
 	<script type="text/javascript" src="js/ion.sound.min.js"></script>
 	<script type="text/javascript" src="js/jquery.ion.sound.js"></script>
 	<script type="text/javascript" src="js/jquery.ion.sound.min.js"></script>
-
+    <script type="text/javascript" src="js/timer.js"></script>
+    <script type="text/javascript" src="js/sound.js"></script>
     <!-- custom javascript file-->
     <script type="text/javascript" src="js/leaderboard.js"></script>
     <script type="text/javascript" src="js/game.js"></script>
@@ -59,7 +60,7 @@
 	<div id="gameScreen">
 		<div id="gameScreenBg"><img src="images/gameScreen.jpg"></img></div>
         <div id="ballDiv"><img id="ball" src="images/inGameObjects/ball.png"></img></div>
-
+        
         <!-- draggable abstacl -->
         <table id="drag">
             <tr>
@@ -92,12 +93,20 @@
                 <td>	<div class="drop-digit tile" id="drop9">  </div> 	</td>	
 			</tr>
 		</table>	
+
+        <span id ="timer_out">0</span>
+        <span id ="colon">:</span>
+        <span id ="minutes">0</span>
 	</div>
+        
+
 
     <div id="winningScreen">
             <div id="formContainer">
                 <form id="form" name="form" onsubmit="return sendData()">
-		            Enter Username:<input id="userId" name="userId" type="text"  />
+                    Time:</br>
+		            Enter Username:
+                    <input id="userId" name="userId" type="text"  />
 		            <input id="submit" name="submit" type="submit" value="Submit"/>
 	            </form>   
             </div>

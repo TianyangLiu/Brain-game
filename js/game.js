@@ -102,6 +102,9 @@ $(function(){
         ion.sound.stop("startbg");
         init();
         drag_drop();
+         start();
+         
+        
     });
 
     $('.leftArrow2').click( function() {
@@ -208,6 +211,7 @@ $(function(){
                 timer = setInterval(move, 10);
             }
             ion.sound.play("click_button");
+            
         });
 
 
@@ -235,19 +239,29 @@ $(function(){
             function determination(){
                 if(ball.style.top <= 0 + 'px'){
                     ballDY = 5;
+                    HitWall.play();
                 }
                 if(ball.style.top >= 260 + 'px'){
                     ballDY = -5;
+                    HitWall.play();
                 }
                 if(ball.style.top <= box5.y + 'px' && box5.inBox == 1 && ball.style.left == box5.x + 'px'){
                     ballDX = 5;
                     ballDY = 0;
+                    HitStone.play();
+                     
                 }
                 if(ball.style.top == 135 + 'px' && ball.style.left == 300 + 'px'){
                     ballDX = 0;
                     ballDY = 0;
+                       
+                                    
                     $('#winningScreen').show();
+                    stoptime();
+                                           
+     
                 }
+                
             }
         
         }
@@ -256,6 +270,7 @@ $(function(){
             $('#win').hide();
             $('#formContainer').hide();
             $('#leaderboard').show();
+              
         });
 
 });
