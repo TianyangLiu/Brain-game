@@ -166,7 +166,7 @@ $(function(){
 
         // check if the ball should turn at the fifth box
         function checkInBox(){
-            if(obstacle4.style.left >= 20 + 'px' && obstacle4.style.width <=10 + 'px'){
+            if(obstacle4.style.left >= 20 + 'px'){
                box5.inBox = 1; 
             }
         }
