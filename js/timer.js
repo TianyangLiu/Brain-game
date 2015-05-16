@@ -1,4 +1,4 @@
-var i, timerstop, divide;
+var i, timerstop, divide, minute;
 	i =0;
 	divide = 1;
 	function start(){
@@ -7,9 +7,12 @@ var i, timerstop, divide;
 	function increment(){
 		i++;
 		document.getElementById("timer_out").innerHTML=(i/divide);
+      
 	}
 	function stoptime(){
             
 		clearInterval(timerstop);
 		timerstop = null;
 	}
+   
+    

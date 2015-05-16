@@ -94,9 +94,9 @@
 			</tr>
 		</table>	
 
-        <span id ="timer_out">
-            0
-        </span>
+        <span id ="timer_out">0</span>
+        <span id ="colon">:</span>
+        <span id ="minutes">0</span>
 	</div>
         
 
@@ -104,7 +104,9 @@
     <div id="winningScreen">
             <div id="formContainer">
                 <form id="form" name="form" onsubmit="return sendData()">
-		            Enter Username:<input id="userId" name="userId" type="text"  />
+                    Time:</br>
+		            Enter Username:
+                    <input id="userId" name="userId" type="text"  />
 		            <input id="submit" name="submit" type="submit" value="Submit"/>
 	            </form>   
             </div>
