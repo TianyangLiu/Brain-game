@@ -103,6 +103,7 @@ $(function(){
         init();
         drag_drop();
          start();
+         min();
          
         
     });

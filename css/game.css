@@ -304,7 +304,7 @@ table{
 #timer_out{
     position: absolute;
     top: 60px;
-    left:  285px;
+    left:  289px;
     font-size:  30px;
     color:  #0094ff
 }
@@ -318,7 +318,7 @@ table{
 #minutes{
     position: absolute;
     top: 60px;
-    left:  250px;
+    left:  238px;
     font-size:  30px;
     color:  #0094ff
 }
