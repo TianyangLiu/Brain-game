@@ -196,30 +196,12 @@ body{
 
 #ballDiv{
     position: absolute;
-}
-
-#ball{
-    position: absolute;
     z-index: 1;
-}
-
-#ball:hover{
-	-webkit-transform:scale(1.25); /* Safari and Chrome */
-	-moz-transform:scale(1.25); /* Firefox */
-    -ms-transform:scale(1.25); /* IE 9 */
-    -o-transform:scale(1.25); /* Opera */
-     transform:scale(1.25);
 }
 
 #drag {
     position: absolute;
     top: 530px;
-    left: 70px;
-}
-
-#drop {
-    position: absolute;
-    top: 90px;
     left: 70px;
 }
 
@@ -229,41 +211,122 @@ body{
 }
 
 .drag-digit{
-	padding: 45px;
 	cursor: pointer;
+    padding: -40px;
 }
 
 .drop-digit{
+    position: absolute;
     border: 5px solid black;
-    padding: 40px;
 }
 
-.obstacle1 {
-    background-image: url(../images/obstacles/Stone_Object_Left.png);
+#drop1{
+    top: 100px;
+    left: 80px;
+    width: 80px;
+    height: 80px;
 }
 
-.obstacle2 {
-    background-image: url(../images/obstacles/Glass_Object_Left.png);
+#drop2{
+    top: 100px;
+    left: 165px;
+    width: 80px;
+    height: 80px;
 }
 
-.obstacle3 {
-    background-image: url(../images/obstacles/Wood_Object_Left.png);
+#drop3{
+    top: 100px;
+    left: 250px;
+    width: 80px;
+    height: 80px;
+}
+
+#drop4{
+    top: 185px;
+    left: 80px;
+    width: 80px;
+    height: 80px;
+}
+
+#drop5{
+    top: 185px;
+    left: 165px;
+    width: 80px;
+    height: 80px;
+}
+
+#drop6{
+    top: 185px;
+    left: 250px;
+    width: 80px;
+    height: 80px;
+}
+
+#drop7{
+    top: 270px;
+    left: 80px;
+    width: 80px;
+    height: 80px;
+}
+
+#drop8{
+    top: 270px;
+    left: 165px;
+    width: 80px;
+    height: 80px;
+}
+
+#drop9{
+    top: 270px;
+    left: 250px;
+    width: 80px;
+    height: 80px;
+}
+
+.borderColorChange{
+    border-color: #f00;
+    z-index: 2;
+}
+
+#obstacle1 {
+    position: absolute;
+    top: 500px;
+    left: 100px;
+}
+
+#obstacle2 {
+    position: absolute;
+    top: 500px;
+    left: 180px;
+}
+
+#obstacle3 {
+    position: absolute;
+    top: 500px;
+    left: 260px;
 }
 
 #obstacle4 {
-    background-image: url(../images/obstacles/Stone_Object_Right.png);
+    position: absolute;
+    top: 600px;
+    left: 100px;
 }
 
-.obstacle5 {
-    background-image: url(../images/obstacles/Glass_Object_Right.png);
+#obstacle5 {
+    position: absolute;
+    top: 600px;
+    left: 180px;
 }
-.obstacle6 {
-    background-image: url(../images/obstacles/Wood_Object_Right.png);
+#obstacle6 {
+    position: absolute;
+    top: 600px;
+    left: 260px;
 }
 
-
-table{
-    border-collapse: collapse;
+#pause_button{
+    position: absolute;
+    top: 30px;
+    left: 50px;
 }
 
 #winningScreen{

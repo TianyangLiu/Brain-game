@@ -62,41 +62,31 @@
         <div id="ballDiv"><img id="ball" src="images/inGameObjects/ball.png"></img></div>
         
         <!-- draggable abstacl -->
-        <table id="drag">
-            <tr>
-                <td>   <div class="drag-digit obstacle1"><span></span></div>  </td>
-                <td>   <div class="drag-digit obstacle2"><span></span></div>  </td>
-                <td>   <div class="drag-digit obstacle3"><span></span></div>  </td>
-            </tr>
-            <tr>
-                <td>   <div class="drag-digit" id="obstacle4"><span></span></div>  </td>
-                <td>   <div class="drag-digit obstacle5"><span></span></div>  </td>
-                <td>   <div class="drag-digit obstacle6"><span></span></div>  </td>
-            </tr>
-        </table>
+        <div class="drag-digit" id="obstacle1"><img src="images/obstacles/Stone_Object_Left.png"/></div>
+        <div class="drag-digit" id="obstacle2"><img src="images/obstacles/Glass_Object_Left.png"/></div>
+        <div class="drag-digit" id="obstacle3"><img src="images/obstacles/Wood_Object_Left.png"/></div>
+        <div class="drag-digit" id="obstacle4"><img src="images/obstacles/Stone_Object_Right.png"/></div>
+        <div class="drag-digit" id="obstacle5"><img src="images/obstacles/Glass_Object_Right.png"/></div>
+        <div class="drag-digit" id="obstacle6"><img src="images/obstacles/Wood_Object_Right.png"/></div>
 
         <!-- droppables tiles  -->	
-		<table id="drop">
-			<tr>
-				<td>	<div class="drop-digit tile" id="drop1">  </div>  </td>
-				<td>	<div class="drop-digit tile" id="drop2">  </div>  </td>
-				<td>	<div class="drop-digit tile" id="drop3">  </div>  </td>
-            </tr>
-            <tr>
-				<td>	<div class="drop-digit tile" id="drop4">  </div> 	</td>
-                <td>	<div class="drop-digit tile" id="drop5">	  </div>	</td>
-				<td>	<div class="drop-digit tile" id="drop6" style="border-style: solid none solid solid">	</div>	</td>
-            </tr>
-            <tr>
-				<td>	<div class="drop-digit tile" id="drop7">  </div>    </td>
-				<td>	<div class="drop-digit tile" id="drop8">  </div>	    </td>
-                <td>	<div class="drop-digit tile" id="drop9">  </div> 	</td>	
-			</tr>
-		</table>	
+		<div class="drop-digit tile" id="drop1"></div>
+		<div class="drop-digit tile" id="drop2"></div>
+		<div class="drop-digit tile" id="drop3"></div>
+		<div class="drop-digit tile" id="drop4"></div>
+        <div class="drop-digit tile" id="drop5"></div>
+		<div class="drop-digit tile" id="drop6" style="border-style: solid none solid solid"></div>
+		<div class="drop-digit tile" id="drop7"></div>
+		<div class="drop-digit tile" id="drop8"></div>
+        <div class="drop-digit tile" id="drop9"></div>
 
+        <!-- timer -->
         <span id ="timer_out">0</span>
         <span id ="colon">:</span>
         <span id ="minutes">0</span>
+
+        <!-- pause button; click this button to pasue the game and also display the menu bar -->
+        <div id="pause_button"><img src="images/buttons/pause_button.png"/></div>
 	</div>
         
 

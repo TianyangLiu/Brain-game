@@ -100,11 +100,7 @@ $(function(){
         ion.sound.play("click_button");
         ion.sound.play("gamebg");//new game sound starts
         ion.sound.stop("startbg");
-        init();
-        drag_drop();
-         start();
-         
-        
+        level1();
     });
 
     $('.leftArrow2').click( function() {
@@ -116,83 +112,13 @@ $(function(){
 
 
 
+        var ballWidth = 15 + 'px';
+        var ballHeight = 15 + 'px';
 
-
-
-
-
-
-
-
-
-
-    function drag_drop(){
-
-    $(".drag-digit").draggable({
-		revert: function(event,ui){
-		    //for jQuery 1.9 version 'uiDraggable' 
-		    //for older jQuery 'draggable'
-		    $(this).data("uiDraggable").originalPosition={
-		    top:0,
-		    left:0
-		    }; return !event;
-		}
-	});
-
-
-		/* droppable function */
-		$(".drop-digit").droppable({
-				tolerance:'intersect',
-			drop: function(event,ui){
-				$(this).droppable('option','accept',ui.draggable);
-				var drop_p = $(this).offset();
-				var drag_p = ui.draggable.offset();
-				var left_end = drop_p.left - drag_p.left - 5;
-				var top_end = drop_p.top - drag_p.top - 5;
-				ui.draggable.animate({
-					top: '+=' + top_end,
-					left: '+=' + left_end,
-				});
-
-				x =ui.draggable.text();
-				$(this).attr("value",x);
-			},
-			out:function(event,ui){
-			    $(this).droppable('option','accept','.drag-digit');
-                checkInBox();
-                checkDrag();
-			}
-		});
-
-            
-        }
-
-        // check if the ball should turn at the fifth box
-        function checkInBox(){
-            if(obstacle4.style.left >= 20 + 'px'){
-               box5.inBox = 1; 
-            }
-        }
-
-
-        function checkDrag(){
-            gameOn = true;
-        }
-
-
-
-        // a basic ball animation test
-        // var ballAngle = 90 + 'px';
-        var ballWidth = 20 + 'px';
-        var ballHeight = 20 + 'px';
-
-        var ballDivWidth = 270 + 'px';
-        var ballDivHeight = 350 + 'px';
-        var ballDivTop = 90 + 'px';
-        var ballDivLeft = 70 + 'px';
-
-        var x = 125 + 'px'; // ball x position
-        var y = 300 + 'px'; // ball y position
+        //var ballDivWidth = 15 + 'px';
+        //var ballDivHeight = 15 + 'px';
+        var ballDivTop = 380 + 'px';
+        var ballDivLeft = 200 + 'px';
 
         var ballDX = 0;
         var ballDY = -5;
@@ -204,73 +130,130 @@ $(function(){
 
         var gameOn = false;
 
-        var box5 = {x: 125, y: 135, inBox: 0};
+        var box5 = {x: 200, y: 230, inBox: null};
 
-        $('#ball').click( function() {
-            if(gameOn){
-                timer = setInterval(move, 10);
+        var o1 = false;
+        var o5 = false;
+
+
+
+
+
+
+    // level one game setting start here
+    function level1(){
+        init();
+        drag_drop();
+        start(); // timer start
+
+        function drag_drop(){
+            $(".drag-digit").draggable({
+		        revert: function(event,ui){
+		            //for jQuery 1.9 version 'uiDraggable' 
+		            //for older jQuery 'draggable'
+		            $(this).data("uiDraggable").originalPosition={
+		            top:0,
+		            left:0
+		            }; return !event;
+		        }
+	        });
+
+		    /* droppable function */
+		    $(".drop-digit").droppable({
+				    tolerance:'intersect',
+                    hoverClass: 'borderColorChange',
+			    drop: function(event,ui){
+				    $(this).droppable('option','accept',ui.draggable);
+				    var drop_p = $(this).offset();
+				    var drag_p = ui.draggable.offset();
+				    var left_end = drop_p.left - drag_p.left + 15;
+				    var top_end = drop_p.top - drag_p.top + 15;
+				    ui.draggable.animate({
+					    top: '+=' + top_end,
+					    left: '+=' + left_end,
+				    });
+
+				    x =ui.draggable.text();
+				    $(this).attr("value",x);
+
+                    checkInBox5();
+                    gameOn = true;
+			    },
+			    out:function(event,ui){
+			        $(this).droppable('option','accept','.drag-digit');
+			    }
+		    });
+        }
+
+        // check if the ball should turn at the fifth box
+        function checkInBox5(){
+            if(obstacle4.style.left >= 165 + 'px' && obstacle4.style.left <= 245 + 'px' && obstacle4.style.top >= 190 + 'px' && obstacle4.style.top <= 270 + 'px'){
+                box5.inBox = 'o5InBox';
+                o5 = true;
+            }else if(obstacle1.style.left >= 165 + 'px' && obstacle1.style.left <= 245 + 'px' && obstacle1.style.top >= 190 + 'px' && obstacle1.style.top <= 270 + 'px'){
+                box5.inBox = 'o1InBox';
+                o1 = true;
             }
-            ion.sound.play("click_button");
-            
-        });
+        }
+
+            $('#ballDiv').click( function() {
+                if(gameOn == true){
+                    setInterval(move, 10);
+                }
+                ion.sound.play("click_button");
+            });
 
 
         function init(){
-            ballDiv.style.width = ballDivWidth;
-            ballDiv.style.height = ballDivHeight;
             ballDiv.style.top = ballDivTop;
             ballDiv.style.left = ballDivLeft;
 
             ball.style.width = ballWidth;
             ball.style.height = ballHeight;
-            ball.style.top = y;
-            ball.style.left = x;
         }
 
         function move(){
-            ball.style.top = parseInt(ball.style.top) + ballDY + 'px';
-            ball.style.left = parseInt(ball.style.left) + ballDX + 'px';
-            if(ball.style.top < 270 + 'px') {
-                ballDivHeight = 270 + 'px';
-                ballDiv.style.height = ballDivHeight;
+            ballDiv.style.top = parseInt(ballDiv.style.top) + ballDY + 'px';
+            ballDiv.style.left = parseInt(ballDiv.style.left) + ballDX + 'px';
+
+            if(ballDiv.style.top <= 360 + 'px') {
                 determination();
             }
 
+            // when the ball hit any wall or obstacle, the heading direction of the ball would change
             function determination(){
-                if(ball.style.top <= 0 + 'px'){
+                if(ballDiv.style.top <= 100 + 'px'){
+                    ballDX = 0;
                     ballDY = 5;
                     HitWall.play();
-                }
-                if(ball.style.top >= 260 + 'px'){
+                }else if(ballDiv.style.top >= 340 + 'px'){
+                    ballDX = 0;
                     ballDY = -5;
                     HitWall.play();
-                }
-                if(ball.style.top <= box5.y + 'px' && box5.inBox == 1 && ball.style.left == box5.x + 'px'){
+                }else if(box5.inBox == 'o5InBox' && o5 == true && ballDiv.style.top == box5.y + 'px' && ballDiv.style.left == box5.x + 'px'){
                     ballDX = 5;
                     ballDY = 0;
                     HitStone.play();
-                     
-                }
-                if(ball.style.top == 135 + 'px' && ball.style.left == 300 + 'px'){
+                }else if(box5.inBox == 'o1InBox' && o1 == true && ballDiv.style.top == box5.y + 'px' && ballDiv.style.left == box5.x + 'px'){
+                    ballDX = -5;
+                    ballDY = 0;
+                    HitStone.play();
+                }else if(ballDiv.style.top == 230 + 'px' && ballDiv.style.left == 350 + 'px'){
+                    clearInterval(move);
                     ballDX = 0;
                     ballDY = 0;
-                       
-                                    
                     $('#winningScreen').show();
                     stoptime();
-                                           
-     
-                }
-                
+                 }
             }
-        
         }
 
-        $('#submit').click( function(){
-            $('#win').hide();
-            $('#formContainer').hide();
-            $('#leaderboard').show();
-              
-        });
+            $('#submit').click( function(){
+                $('#win').hide();
+                $('#formContainer').hide();
+                $('#leaderboard').show();
+            });
+
+   } // level one game ends here
 
 });
