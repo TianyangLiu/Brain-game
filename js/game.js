@@ -14,7 +14,7 @@ $(function(){
 		{
 			name:"startbg",
 			volume: 0.9,
-			loop: 900000,
+			loop: 900000
 		},
 	    ],
 		volume: 0.5,
@@ -152,7 +152,7 @@ $(function(){
 				var top_end = drop_p.top - drag_p.top - 5;
 				ui.draggable.animate({
 					top: '+=' + top_end,
-					left: '+=' + left_end,
+					left: '+=' + left_end
 				});
 
 				x =ui.draggable.text();
