@@ -112,12 +112,12 @@ $(function () {
 
 
 
-    var ballWidth = 15 + 'px';
-    var ballHeight = 15 + 'px';
+    var ballWidth = 20 + 'px';
+    var ballHeight = 20 + 'px';
 
     //var ballDivWidth = 15 + 'px';
     //var ballDivHeight = 15 + 'px';
-    var ballDivTop = 380 + 'px';
+    var ballDivTop = 400 + 'px';
     var ballDivLeft = 200 + 'px';
 
     var ballDX = 0;
@@ -130,6 +130,7 @@ $(function () {
 
     var gameOn = false;
 
+    var box1 = { x: 120, y: 140, inBox: null, o1: false, o2: false };
     var box2 = { x: 200, y: 140, inBox: null, o1: false, o2: false };
     var box4 = { x: 120, y: 225, inBox: null, o1: false, o2: false };
     var box5 = { x: 200, y: 225, inBox: null, o1: false, o2: false };
@@ -188,6 +189,16 @@ $(function () {
 
         // check if the ball should turn at the fifth box
         function checkInBox() {
+            // obstacle in the 1st tile
+            if (obstacle1.style.left > 75 + 'px' && obstacle1.style.left < 160 + 'px' && obstacle1.style.top > 100 + 'px' && obstacle1.style.top < 185 + 'px') {
+                box1.inBox = 'o1InBox';
+                box1.o1 = true;
+            }
+            if (obstacle2.style.left > 75 + 'px' && obstacle2.style.left < 160 + 'px' && obstacle2.style.top > 100 + 'px' && obstacle2.style.top < 185 + 'px') {
+                box1.inBox = 'o2InBox';
+                box1.o2 = true;
+            }
+
             // obstacle in the 2nd tile
             if (obstacle1.style.left > 165 + 'px' && obstacle1.style.left < 245 + 'px' && obstacle1.style.top > 105 + 'px' && obstacle1.style.top < 185 + 'px') {
                 box2.inBox = 'o1InBox';
@@ -318,43 +329,88 @@ $(function () {
             }
 
 
-            // tile 2
-            if (box2.inBox == 'o1InBox' && box2.o1 == true && ballDiv.style.top == parseInt(box2.y) + 'px' && ballDiv.style.left == parseInt(box2.x) + 'px' && left) {
+
+            // tile 1
+            if (box1.inBox == 'o1InBox' && box1.o1 && ballDiv.style.top == parseInt(box1.y) + 'px' && ballDiv.style.left == parseInt(box1.x) + 'px' && left) {
                 ballDX = 0;
                 ballDY = -5;
                 HitStone.play();
             }
-            if (box2.inBox == 'o1InBox' && box2.o1 == true && ballDiv.style.top == parseInt(box2.y) + 'px' && ballDiv.style.left == parseInt(box2.x) + 'px' && up) {
+            if (box1.inBox == 'o1InBox' && box1.o1 && ballDiv.style.top == parseInt(box1.y) + 'px' && ballDiv.style.left == parseInt(box1.x) + 'px' && up) {
                 ballDX = -5;
                 ballDY = 0;
                 HitStone.play();
             }
-            if (box2.inBox == 'o1InBox' && box2.o1 == true && ballDiv.style.top == parseInt(box2.y) + 'px' && ballDiv.style.left == parseInt(box2.x) + 'px' && right) {
+            if (box1.inBox == 'o1InBox' && box1.o1 && ballDiv.style.top == parseInt(box1.y) + 'px' && ballDiv.style.left == parseInt(box1.x) + 'px' && right) {
                 ballDX = 0;
                 ballDY = 5;
                 HitStone.play();
             }
-            if (box2.inBox == 'o1InBox' && box2.o1 == true && ballDiv.style.top == parseInt(box2.y) + 'px' && ballDiv.style.left == parseInt(box2.x) + 'px' && down) {
+            if (box1.inBox == 'o1InBox' && box1.o1 && ballDiv.style.top == parseInt(box1.y) + 'px' && ballDiv.style.left == parseInt(box1.x) + 'px' && down) {
                 ballDX = 5;
                 ballDY = 0;
                 HitStone.play();
             }
-            if (box2.inBox == 'o2InBox' && box2.o2 == true && ballDiv.style.top == parseInt(box2.y) + 'px' && ballDiv.style.left == parseInt(box2.x) + 'px' && left) {
+            if (box1.inBox == 'o2InBox' && box1.o2 && ballDiv.style.top == parseInt(box1.y) + 'px' && ballDiv.style.left == parseInt(box1.x) + 'px' && left) {
                 ballDX = 0;
                 ballDY = 5;
                 HitStone.play();
             }
-            if (box2.inBox == 'o2InBox' && box2.o2 == true && ballDiv.style.top == parseInt(box2.y) + 'px' && ballDiv.style.left == parseInt(box2.x) + 'px' && up) {
+            if (box1.inBox == 'o2InBox' && box1.o2 && ballDiv.style.top == parseInt(box1.y) + 'px' && ballDiv.style.left == parseInt(box1.x) + 'px' && up) {
                 ballDX = 5;
                 ballDY = 0;
                 HitStone.play();
             }
-            if (box2.inBox == 'o2InBox' && box2.o2 == true && ballDiv.style.top == parseInt(box2.y) + 'px' && ballDiv.style.left == parseInt(box2.x) + 'px' && right) {
+            if (box1.inBox == 'o2InBox' && box1.o2 && ballDiv.style.top == parseInt(box1.y) + 'px' && ballDiv.style.left == parseInt(box1.x) + 'px' && right) {
                 ballDX = 0;
                 ballDY = -5;
                 HitStone.play();
             }
-            if (box2.inBox == 'o2InBox' && box2.o2 == true && ballDiv.style.top == parseInt(box2.y) + 'px' && ballDiv.style.left == parseInt(box2.x) + 'px' && down) {
+            if (box1.inBox == 'o2InBox' && box1.o2 && ballDiv.style.top == parseInt(box1.y) + 'px' && ballDiv.style.left == parseInt(box1.x) + 'px' && down) {
+                ballDX = -5;
+                ballDY = 0;
+                HitStone.play();
+            }
+
+
+
+            // tile 2
+            if (box2.inBox == 'o1InBox' && box2.o1 && ballDiv.style.top == parseInt(box2.y) + 'px' && ballDiv.style.left == parseInt(box2.x) + 'px' && left) {
+                ballDX = 0;
+                ballDY = -5;
+                HitStone.play();
+            }
+            if (box2.inBox == 'o1InBox' && box2.o1 && ballDiv.style.top == parseInt(box2.y) + 'px' && ballDiv.style.left == parseInt(box2.x) + 'px' && up) {
+                ballDX = -5;
+                ballDY = 0;
+                HitStone.play();
+            }
+            if (box2.inBox == 'o1InBox' && box2.o1 && ballDiv.style.top == parseInt(box2.y) + 'px' && ballDiv.style.left == parseInt(box2.x) + 'px' && right) {
+                ballDX = 0;
+                ballDY = 5;
+                HitStone.play();
+            }
+            if (box2.inBox == 'o1InBox' && box2.o1 && ballDiv.style.top == parseInt(box2.y) + 'px' && ballDiv.style.left == parseInt(box2.x) + 'px' && down) {
+                ballDX = 5;
+                ballDY = 0;
+                HitStone.play();
+            }
+            if (box2.inBox == 'o2InBox' && box2.o2 && ballDiv.style.top == parseInt(box2.y) + 'px' && ballDiv.style.left == parseInt(box2.x) + 'px' && left) {
+                ballDX = 0;
+                ballDY = 5;
+                HitStone.play();
+            }
+            if (box2.inBox == 'o2InBox' && box2.o2 && ballDiv.style.top == parseInt(box2.y) + 'px' && ballDiv.style.left == parseInt(box2.x) + 'px' && up) {
+                ballDX = 5;
+                ballDY = 0;
+                HitStone.play();
+            }
+            if (box2.inBox == 'o2InBox' && box2.o2 && ballDiv.style.top == parseInt(box2.y) + 'px' && ballDiv.style.left == parseInt(box2.x) + 'px' && right) {
+                ballDX = 0;
+                ballDY = -5;
+                HitStone.play();
+            }
+            if (box2.inBox == 'o2InBox' && box2.o2 && ballDiv.style.top == parseInt(box2.y) + 'px' && ballDiv.style.left == parseInt(box2.x) + 'px' && down) {
                 ballDX = -5;
                 ballDY = 0;
                 HitStone.play();
@@ -362,42 +418,42 @@ $(function () {
 
 
             // tile 4
-            if (box4.inBox == 'o1InBox' && box4.o1 == true && ballDiv.style.top == parseInt(box4.y) + 'px' && ballDiv.style.left == parseInt(box4.x) + 'px' && left) {
+            if (box4.inBox == 'o1InBox' && box4.o1 && ballDiv.style.top == parseInt(box4.y) + 'px' && ballDiv.style.left == parseInt(box4.x) + 'px' && left) {
                 ballDX = 0;
                 ballDY = -5;
                 HitStone.play();
             }
-            if (box4.inBox == 'o1InBox' && box4.o1 == true && ballDiv.style.top == parseInt(box4.y) + 'px' && ballDiv.style.left == parseInt(box4.x) + 'px' && up) {
+            if (box4.inBox == 'o1InBox' && box4.o1 && ballDiv.style.top == parseInt(box4.y) + 'px' && ballDiv.style.left == parseInt(box4.x) + 'px' && up) {
                 ballDX = -5;
                 ballDY = 0;
                 HitStone.play();
             }
-            if (box4.inBox == 'o1InBox' && box4.o1 == true && ballDiv.style.top == parseInt(box4.y) + 'px' && ballDiv.style.left == parseInt(box4.x) + 'px' && right) {
+            if (box4.inBox == 'o1InBox' && box4.o1 && ballDiv.style.top == parseInt(box4.y) + 'px' && ballDiv.style.left == parseInt(box4.x) + 'px' && right) {
                 ballDX = 0;
                 ballDY = 5;
                 HitStone.play();
             }
-            if (box4.inBox == 'o1InBox' && box4.o1 == true && ballDiv.style.top == parseInt(box4.y) + 'px' && ballDiv.style.left == parseInt(box4.x) + 'px' && down) {
+            if (box4.inBox == 'o1InBox' && box4.o1 && ballDiv.style.top == parseInt(box4.y) + 'px' && ballDiv.style.left == parseInt(box4.x) + 'px' && down) {
                 ballDX = 5;
                 ballDY = 0;
                 HitStone.play();
             }
-            if (box4.inBox == 'o2InBox' && box4.o2 == true && ballDiv.style.top == parseInt(box4.y) + 'px' && ballDiv.style.left == parseInt(box4.x) + 'px' && left) {
+            if (box4.inBox == 'o2InBox' && box4.o2 && ballDiv.style.top == parseInt(box4.y) + 'px' && ballDiv.style.left == parseInt(box4.x) + 'px' && left) {
                 ballDX = 0;
                 ballDY = 5;
                 HitStone.play();
             }
-            if (box4.inBox == 'o2InBox' && box4.o2 == true && ballDiv.style.top == parseInt(box4.y) + 'px' && ballDiv.style.left == parseInt(box4.x) + 'px' && up) {
+            if (box4.inBox == 'o2InBox' && box4.o2 && ballDiv.style.top == parseInt(box4.y) + 'px' && ballDiv.style.left == parseInt(box4.x) + 'px' && up) {
                 ballDX = 5;
                 ballDY = 0;
                 HitStone.play();
             }
-            if (box4.inBox == 'o2InBox' && box4.o2 == true && ballDiv.style.top == parseInt(box4.y) + 'px' && ballDiv.style.left == parseInt(box4.x) + 'px' && right) {
+            if (box4.inBox == 'o2InBox' && box4.o2 && ballDiv.style.top == parseInt(box4.y) + 'px' && ballDiv.style.left == parseInt(box4.x) + 'px' && right) {
                 ballDX = 0;
                 ballDY = -5;
                 HitStone.play();
             }
-            if (box4.inBox == 'o2InBox' && box4.o2 == true && ballDiv.style.top == parseInt(box4.y) + 'px' && ballDiv.style.left == parseInt(box4.x) + 'px' && down) {
+            if (box4.inBox == 'o2InBox' && box4.o2 && ballDiv.style.top == parseInt(box4.y) + 'px' && ballDiv.style.left == parseInt(box4.x) + 'px' && down) {
                 ballDX = -5;
                 ballDY = 0;
                 HitStone.play();
@@ -406,42 +462,42 @@ $(function () {
 
 
             // tile 5
-            if (box5.inBox == 'o2InBox' && box5.o2 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && up) {
+            if (box5.inBox == 'o2InBox' && box5.o2 && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && up) {
                 ballDX = 5;
                 ballDY = 0;
                 HitStone.play();
             }
-            if (box5.inBox == 'o2InBox' && box5.o2 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && down) {
+            if (box5.inBox == 'o2InBox' && box5.o2 && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && down) {
                 ballDX = -5;
                 ballDY = 0;
                 HitStone.play();
             }
-            if (box5.inBox == 'o2InBox' && box5.o2 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && left) {
+            if (box5.inBox == 'o2InBox' && box5.o2 && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && left) {
                 ballDX = 0;
                 ballDY = 5;
                 HitStone.play();
             }
-            if (box5.inBox == 'o2InBox' && box5.o2 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && right) {
+            if (box5.inBox == 'o2InBox' && box5.o2 && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && right) {
                 ballDX = 0;
                 ballDY = -5;
                 HitStone.play();
             }
-            if (box5.inBox == 'o1InBox' && box5.o1 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && up) {
+            if (box5.inBox == 'o1InBox' && box5.o1 && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && up) {
                 ballDX = -5;
                 ballDY = 0;
                 HitStone.play();
             }
-            if (box5.inBox == 'o1InBox' && box5.o1 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && right) {
+            if (box5.inBox == 'o1InBox' && box5.o1 && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && right) {
                 ballDX = 0;
                 ballDY = 5;
                 HitStone.play();
             }
-            if (box5.inBox == 'o1InBox' && box5.o1 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && left) {
+            if (box5.inBox == 'o1InBox' && box5.o1 && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && left) {
                 ballDX = 0;
                 ballDY = -5;
                 HitStone.play();
             }
-            if (box5.inBox == 'o1InBox' && box5.o1 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && down) {
+            if (box5.inBox == 'o1InBox' && box5.o1 && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && down) {
                 ballDX = 5;
                 ballDY = 0;
                 HitStone.play();
@@ -450,42 +506,42 @@ $(function () {
 
 
             // tile 8
-            if (box8.inBox == 'o2InBox' && box8.o2 == true && ballDiv.style.top == parseInt(box8.y) + 'px' && ballDiv.style.left == parseInt(box8.x) + 'px' && up) {
+            if (box8.inBox == 'o2InBox' && box8.o2 && ballDiv.style.top == parseInt(box8.y) + 'px' && ballDiv.style.left == parseInt(box8.x) + 'px' && up) {
                 ballDX = 5;
                 ballDY = 0;
                 HitStone.play();
             }
-            if (box8.inBox == 'o2InBox' && box8.o2 == true && ballDiv.style.top == parseInt(box8.y) + 'px' && ballDiv.style.left == parseInt(box8.x) + 'px' && down) {
+            if (box8.inBox == 'o2InBox' && box8.o2 && ballDiv.style.top == parseInt(box8.y) + 'px' && ballDiv.style.left == parseInt(box8.x) + 'px' && down) {
                 ballDX = -5;
                 ballDY = 0;
                 HitStone.play();
             }
-            if (box8.inBox == 'o2InBox' && box8.o2 == true && ballDiv.style.top == parseInt(box8.y) + 'px' && ballDiv.style.left == parseInt(box8.x) + 'px' && left) {
+            if (box8.inBox == 'o2InBox' && box8.o2 && ballDiv.style.top == parseInt(box8.y) + 'px' && ballDiv.style.left == parseInt(box8.x) + 'px' && left) {
                 ballDX = 0;
                 ballDY = 5;
                 HitStone.play();
             }
-            if (box8.inBox == 'o2InBox' && box8.o2 == true && ballDiv.style.top == parseInt(box8.y) + 'px' && ballDiv.style.left == parseInt(box8.x) + 'px' && right) {
+            if (box8.inBox == 'o2InBox' && box8.o2 && ballDiv.style.top == parseInt(box8.y) + 'px' && ballDiv.style.left == parseInt(box8.x) + 'px' && right) {
                 ballDX = 0;
                 ballDY = -5;
                 HitStone.play();
             }
-            if (box8.inBox == 'o1InBox' && box8.o1 == true && ballDiv.style.top == parseInt(box8.y) + 'px' && ballDiv.style.left == parseInt(box8.x) + 'px' && up) {
+            if (box8.inBox == 'o1InBox' && box8.o1 && ballDiv.style.top == parseInt(box8.y) + 'px' && ballDiv.style.left == parseInt(box8.x) + 'px' && up) {
                 ballDX = -5;
                 ballDY = 0;
                 HitStone.play();
             }
-            if (box8.inBox == 'o1InBox' && box8.o1 == true && ballDiv.style.top == parseInt(box8.y) + 'px' && ballDiv.style.left == parseInt(box8.x) + 'px' && right) {
+            if (box8.inBox == 'o1InBox' && box8.o1 && ballDiv.style.top == parseInt(box8.y) + 'px' && ballDiv.style.left == parseInt(box8.x) + 'px' && right) {
                 ballDX = 0;
                 ballDY = 5;
                 HitStone.play();
             }
-            if (box8.inBox == 'o1InBox' && box8.o1 == true && ballDiv.style.top == parseInt(box8.y) + 'px' && ballDiv.style.left == parseInt(box8.x) + 'px' && left) {
+            if (box8.inBox == 'o1InBox' && box8.o1 && ballDiv.style.top == parseInt(box8.y) + 'px' && ballDiv.style.left == parseInt(box8.x) + 'px' && left) {
                 ballDX = 0;
                 ballDY = -5;
                 HitStone.play();
             }
-            if (box8.inBox == 'o1InBox' && box8.o1 == true && ballDiv.style.top == parseInt(box8.y) + 'px' && ballDiv.style.left == parseInt(box8.x) + 'px' && down) {
+            if (box8.inBox == 'o1InBox' && box8.o1 && ballDiv.style.top == parseInt(box8.y) + 'px' && ballDiv.style.left == parseInt(box8.x) + 'px' && down) {
                 ballDX = 5;
                 ballDY = 0;
                 HitStone.play();
