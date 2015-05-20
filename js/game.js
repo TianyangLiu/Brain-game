@@ -133,7 +133,7 @@ $(function () {
     var box5 = { x: 200, y: 230, inBox: null };
 
     var o1 = false;
-    var o5 = false;
+    var o2 = false;
 
 
 
@@ -188,9 +188,9 @@ $(function () {
 
         // check if the ball should turn at the fifth box
         function checkInBox5() {
-            if (obstacle4.style.left >= 165 + 'px' && obstacle4.style.left <= 245 + 'px' && obstacle4.style.top >= 190 + 'px' && obstacle4.style.top <= 270 + 'px') {
-                box5.inBox = 'o5InBox';
-                o5 = true;
+            if (obstacle2.style.left >= 165 + 'px' && obstacle2.style.left <= 245 + 'px' && obstacle2.style.top >= 190 + 'px' && obstacle2.style.top <= 270 + 'px') {
+                box5.inBox = 'o2InBox';
+                o2 = true;
             } else if (obstacle1.style.left >= 165 + 'px' && obstacle1.style.left <= 245 + 'px' && obstacle1.style.top >= 190 + 'px' && obstacle1.style.top <= 270 + 'px') {
                 box5.inBox = 'o1InBox';
                 o1 = true;
@@ -213,33 +213,67 @@ $(function () {
             ball.style.height = ballHeight;
         }
 
-        function move() {
+        function move(){
             ballDiv.style.top = parseInt(ballDiv.style.top) + ballDY + 'px';
             ballDiv.style.left = parseInt(ballDiv.style.left) + ballDX + 'px';
+            detectInTile();
+        }
 
-            if (ballDiv.style.top <= 360 + 'px') {
-                determination();
+        function detectInTile(){
+            if(ballDiv.style.top < parseInt(360) + 'px') {
+                direction();
+                
             }
+        }
+
+        function direction(){
+            if(ballDX == 0 && ballDY == -5){
+                up = true;
+            }
+            if(ballDX == 0 && ballDY == 5){
+                down = true;
+            }
+            if(ballDX == 5 && ballDY == 0){
+                right = true;
+            }
+            if(ballDX == -5 && ballDY == 0){
+                left = true;
+            }
+            collision();
+        }
 
             // when the ball hit any wall or obstacle, the heading direction of the ball would change
-            function determination() {
-                if (ballDiv.style.top <= 100 + 'px') {
+            function collision() {
+                if(ballDiv.style.top == parseInt(100) + 'px'){
                     ballDX = 0;
                     ballDY = 5;
                     HitWall.play();
-                } else if (ballDiv.style.top >= 340 + 'px') {
+                }
+                if(ballDiv.style.top == parseInt(340) + 'px'){
                     ballDX = 0;
                     ballDY = -5;
                     HitWall.play();
-                } else if (box5.inBox == 'o5InBox' && o5 == true && ballDiv.style.top == box5.y + 'px' && ballDiv.style.left == box5.x + 'px') {
+                }
+                if(ballDiv.style.left == parseInt(80) + 'px'){
+                    ballDX = 5;
+                    ballDY = 0;
+                }
+                if(box5.inBox == 'o2InBox' && o2 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px'){
                     ballDX = 5;
                     ballDY = 0;
                     HitStone.play();
-                } else if (box5.inBox == 'o1InBox' && o1 == true && ballDiv.style.top == box5.y + 'px' && ballDiv.style.left == box5.x + 'px') {
+                }
+                if(box5.inBox == 'o1InBox' && o1 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && up){
                     ballDX = -5;
                     ballDY = 0;
                     HitStone.play();
-                } else if (ballDiv.style.top == 230 + 'px' && ballDiv.style.left == 350 + 'px') {
+                }
+                if(box5.inBox == 'o1InBox' && o1 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && right){
+                    ballDX = 0;
+                    ballDY = 5;
+                    HitStone.play();
+                }
+                if (ballDiv.style.top == 230 + 'px' && ballDiv.style.left == 350 + 'px') {
                     clearInterval(move);
                     ballDX = 0;
                     ballDY = 0;
@@ -249,7 +283,7 @@ $(function () {
                     stopCounter();
                 }
             }
-        }
+        
 
         $('#submit').click(function () {
             $('#win').hide();
