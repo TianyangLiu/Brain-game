@@ -123,17 +123,17 @@ $(function () {
     var ballDX = 0;
     var ballDY = -5;
 
-    var up = false // determine the coming direction of the ball
-    var left = false // determine the coming direction of the ball
-    var down = false // determine the coming direction of the ball
-    var right = false // determine the coming direction of the ball
+    var up = false // determine the heading direction of the ball
+    var left = false // determine the heading direction of the ball
+    var down = false // determine the heading direction of the ball
+    var right = false // determine the heading direction of the ball
 
     var gameOn = false;
 
-    var box5 = { x: 200, y: 230, inBox: null };
-
-    var o1 = false;
-    var o2 = false;
+    var box2 = { x: 200, y: 140, inBox: null, o1: false, o2: false };
+    var box4 = { x: 120, y: 225, inBox: null, o1: false, o2: false };
+    var box5 = { x: 200, y: 225, inBox: null, o1: false, o2: false };
+    var box8 = { x: 200, y: 310, inBox: null, o1: false, o2: false };
 
 
 
@@ -168,7 +168,7 @@ $(function () {
                     var drop_p = $(this).offset();
                     var drag_p = ui.draggable.offset();
                     var left_end = drop_p.left - drag_p.left + 15;
-                    var top_end = drop_p.top - drag_p.top + 15;
+                    var top_end = drop_p.top - drag_p.top + 20;
                     ui.draggable.animate({
                         top: '+=' + top_end,
                         left: '+=' + left_end
@@ -177,7 +177,7 @@ $(function () {
                     x = ui.draggable.text();
                     $(this).attr("value", x);
 
-                    checkInBox5();
+                    checkInBox();
                     gameOn = true;
                 },
                 out: function (event, ui) {
@@ -187,19 +187,53 @@ $(function () {
         }
 
         // check if the ball should turn at the fifth box
-        function checkInBox5() {
-            if (obstacle2.style.left >= 165 + 'px' && obstacle2.style.left <= 245 + 'px' && obstacle2.style.top >= 190 + 'px' && obstacle2.style.top <= 270 + 'px') {
-                box5.inBox = 'o2InBox';
-                o2 = true;
-            } else if (obstacle1.style.left >= 165 + 'px' && obstacle1.style.left <= 245 + 'px' && obstacle1.style.top >= 190 + 'px' && obstacle1.style.top <= 270 + 'px') {
+        function checkInBox() {
+            // obstacle in the 2nd tile
+            if (obstacle1.style.left > 165 + 'px' && obstacle1.style.left < 245 + 'px' && obstacle1.style.top > 105 + 'px' && obstacle1.style.top < 185 + 'px') {
+                box2.inBox = 'o1InBox';
+                box2.o1 = true;
+            }
+            if (obstacle2.style.left > 165 + 'px' && obstacle2.style.left < 245 + 'px' && obstacle2.style.top > 105 + 'px' && obstacle2.style.top < 185 + 'px') {
+                box2.inBox = 'o2InBox';
+                box2.o2 = true;
+            }
+
+            // obstacle in the 4nd tile
+            if (obstacle1.style.left > 80 + 'px' && obstacle1.style.left < 170 + 'px' && obstacle1.style.top > 190 + 'px' && obstacle1.style.top < 270 + 'px') {
+                box4.inBox = 'o1InBox';
+                box4.o1 = true;
+            }
+            if (obstacle2.style.left > 80 + 'px' && obstacle2.style.left < 170 + 'px' && obstacle2.style.top > 190 + 'px' && obstacle2.style.top < 270 + 'px') {
+                box4.inBox = 'o2InBox';
+                box4.o2 = true;
+            }
+
+            // obstacle in the 5th tile
+            if (obstacle1.style.left > 165 + 'px' && obstacle1.style.left < 245 + 'px' && obstacle1.style.top > 190 + 'px' && obstacle1.style.top < 270 + 'px') {
                 box5.inBox = 'o1InBox';
-                o1 = true;
+                box5.o1 = true;
+            }
+            if (obstacle2.style.left > 165 + 'px' && obstacle2.style.left < 245 + 'px' && obstacle2.style.top > 190 + 'px' && obstacle2.style.top < 270 + 'px') {
+                box5.inBox = 'o2InBox';
+                box5.o2 = true;
+            }
+
+            // obstacle in the 8th tile
+            if (obstacle1.style.left > 165 + 'px' && obstacle1.style.left < 245 + 'px' && obstacle1.style.top > 275 + 'px' && obstacle1.style.top < 360 + 'px') {
+                box8.inBox = 'o1InBox';
+                box8.o1 = true;
+            }
+            if (obstacle2.style.left > 165 + 'px' && obstacle2.style.left < 245 + 'px' && obstacle2.style.top > 275 + 'px' && obstacle2.style.top < 360 + 'px') {
+                box8.inBox = 'o2InBox';
+                box8.o2 = true;
             }
         }
 
+
+        // when the ball is clicked, the ball will start moving. This is done because the timer method
         $('#ballDiv').click(function () {
             if (gameOn == true) {
-                setInterval(move, 10);
+                setInterval(move, 10); // timer
             }
             ion.sound.play("click_button");
         });
@@ -213,6 +247,8 @@ $(function () {
             ball.style.height = ballHeight;
         }
 
+
+        // this function will run every 10ms, and the ball will move some pixels every 10ms
         function move() {
             ballDiv.style.top = parseInt(ballDiv.style.top) + ballDY + 'px';
             ballDiv.style.left = parseInt(ballDiv.style.left) + ballDX + 'px';
@@ -226,6 +262,8 @@ $(function () {
             }
         }
 
+
+        // dectect which direction that the bal is currently heading to, and based on that, the ball will response differently when it hit a wall or an obstacle
         function direction() {
             if (ballDX == 0 && ballDY == -5) {
                 up = true;
@@ -252,36 +290,210 @@ $(function () {
 
         // when the ball hit any wall or obstacle, the heading direction of the ball would change
         function collision() {
-            if (ballDiv.style.top == parseInt(100) + 'px') {
+            // boundaries detection
+            if (ballDiv.style.top == 100 + 'px') {
                 ballDX = 0;
                 ballDY = 5;
                 HitWall.play();
             }
-            if (ballDiv.style.top == parseInt(340) + 'px') {
+            if (ballDiv.style.top == 340 + 'px') {
                 ballDX = 0;
                 ballDY = -5;
                 HitWall.play();
             }
-            if (ballDiv.style.left == parseInt(80) + 'px') {
+            if (ballDiv.style.left == 80 + 'px') {
                 ballDX = 5;
                 ballDY = 0;
+                HitWall.play();
             }
-            if (box5.inBox == 'o2InBox' && o2 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px') {
-                ballDX = 5;
+            if (ballDiv.style.left == 330 + 'px' && ballDiv.style.top >= 100 + 'px' && ballDiv.style.top <= 180 + 'px') {
+                ballDX = -5;
                 ballDY = 0;
+                HitWall.play();
+            }
+            if (ballDiv.style.left == 330 + 'px' && ballDiv.style.top >= 275 + 'px' && ballDiv.style.top <= 360 + 'px') {
+                ballDX = -5;
+                ballDY = 0;
+                HitWall.play();
+            }
+
+
+            // tile 2
+            if (box2.inBox == 'o1InBox' && box2.o1 == true && ballDiv.style.top == parseInt(box2.y) + 'px' && ballDiv.style.left == parseInt(box2.x) + 'px' && left) {
+                ballDX = 0;
+                ballDY = -5;
                 HitStone.play();
             }
-            if (box5.inBox == 'o1InBox' && o1 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && up) {
+            if (box2.inBox == 'o1InBox' && box2.o1 == true && ballDiv.style.top == parseInt(box2.y) + 'px' && ballDiv.style.left == parseInt(box2.x) + 'px' && up) {
                 ballDX = -5;
                 ballDY = 0;
                 HitStone.play();
             }
-            if (box5.inBox == 'o1InBox' && o1 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && right) {
+            if (box2.inBox == 'o1InBox' && box2.o1 == true && ballDiv.style.top == parseInt(box2.y) + 'px' && ballDiv.style.left == parseInt(box2.x) + 'px' && right) {
                 ballDX = 0;
                 ballDY = 5;
                 HitStone.play();
             }
-            if (ballDiv.style.top == 230 + 'px' && ballDiv.style.left == 350 + 'px') {
+            if (box2.inBox == 'o1InBox' && box2.o1 == true && ballDiv.style.top == parseInt(box2.y) + 'px' && ballDiv.style.left == parseInt(box2.x) + 'px' && down) {
+                ballDX = 5;
+                ballDY = 0;
+                HitStone.play();
+            }
+            if (box2.inBox == 'o2InBox' && box2.o2 == true && ballDiv.style.top == parseInt(box2.y) + 'px' && ballDiv.style.left == parseInt(box2.x) + 'px' && left) {
+                ballDX = 0;
+                ballDY = 5;
+                HitStone.play();
+            }
+            if (box2.inBox == 'o2InBox' && box2.o2 == true && ballDiv.style.top == parseInt(box2.y) + 'px' && ballDiv.style.left == parseInt(box2.x) + 'px' && up) {
+                ballDX = 5;
+                ballDY = 0;
+                HitStone.play();
+            }
+            if (box2.inBox == 'o2InBox' && box2.o2 == true && ballDiv.style.top == parseInt(box2.y) + 'px' && ballDiv.style.left == parseInt(box2.x) + 'px' && right) {
+                ballDX = 0;
+                ballDY = -5;
+                HitStone.play();
+            }
+            if (box2.inBox == 'o2InBox' && box2.o2 == true && ballDiv.style.top == parseInt(box2.y) + 'px' && ballDiv.style.left == parseInt(box2.x) + 'px' && down) {
+                ballDX = -5;
+                ballDY = 0;
+                HitStone.play();
+            }
+
+
+            // tile 4
+            if (box4.inBox == 'o1InBox' && box4.o1 == true && ballDiv.style.top == parseInt(box4.y) + 'px' && ballDiv.style.left == parseInt(box4.x) + 'px' && left) {
+                ballDX = 0;
+                ballDY = -5;
+                HitStone.play();
+            }
+            if (box4.inBox == 'o1InBox' && box4.o1 == true && ballDiv.style.top == parseInt(box4.y) + 'px' && ballDiv.style.left == parseInt(box4.x) + 'px' && up) {
+                ballDX = -5;
+                ballDY = 0;
+                HitStone.play();
+            }
+            if (box4.inBox == 'o1InBox' && box4.o1 == true && ballDiv.style.top == parseInt(box4.y) + 'px' && ballDiv.style.left == parseInt(box4.x) + 'px' && right) {
+                ballDX = 0;
+                ballDY = 5;
+                HitStone.play();
+            }
+            if (box4.inBox == 'o1InBox' && box4.o1 == true && ballDiv.style.top == parseInt(box4.y) + 'px' && ballDiv.style.left == parseInt(box4.x) + 'px' && down) {
+                ballDX = 5;
+                ballDY = 0;
+                HitStone.play();
+            }
+            if (box4.inBox == 'o2InBox' && box4.o2 == true && ballDiv.style.top == parseInt(box4.y) + 'px' && ballDiv.style.left == parseInt(box4.x) + 'px' && left) {
+                ballDX = 0;
+                ballDY = 5;
+                HitStone.play();
+            }
+            if (box4.inBox == 'o2InBox' && box4.o2 == true && ballDiv.style.top == parseInt(box4.y) + 'px' && ballDiv.style.left == parseInt(box4.x) + 'px' && up) {
+                ballDX = 5;
+                ballDY = 0;
+                HitStone.play();
+            }
+            if (box4.inBox == 'o2InBox' && box4.o2 == true && ballDiv.style.top == parseInt(box4.y) + 'px' && ballDiv.style.left == parseInt(box4.x) + 'px' && right) {
+                ballDX = 0;
+                ballDY = -5;
+                HitStone.play();
+            }
+            if (box4.inBox == 'o2InBox' && box4.o2 == true && ballDiv.style.top == parseInt(box4.y) + 'px' && ballDiv.style.left == parseInt(box4.x) + 'px' && down) {
+                ballDX = -5;
+                ballDY = 0;
+                HitStone.play();
+            }
+
+
+
+            // tile 5
+            if (box5.inBox == 'o2InBox' && box5.o2 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && up) {
+                ballDX = 5;
+                ballDY = 0;
+                HitStone.play();
+            }
+            if (box5.inBox == 'o2InBox' && box5.o2 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && down) {
+                ballDX = -5;
+                ballDY = 0;
+                HitStone.play();
+            }
+            if (box5.inBox == 'o2InBox' && box5.o2 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && left) {
+                ballDX = 0;
+                ballDY = 5;
+                HitStone.play();
+            }
+            if (box5.inBox == 'o2InBox' && box5.o2 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && right) {
+                ballDX = 0;
+                ballDY = -5;
+                HitStone.play();
+            }
+            if (box5.inBox == 'o1InBox' && box5.o1 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && up) {
+                ballDX = -5;
+                ballDY = 0;
+                HitStone.play();
+            }
+            if (box5.inBox == 'o1InBox' && box5.o1 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && right) {
+                ballDX = 0;
+                ballDY = 5;
+                HitStone.play();
+            }
+            if (box5.inBox == 'o1InBox' && box5.o1 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && left) {
+                ballDX = 0;
+                ballDY = -5;
+                HitStone.play();
+            }
+            if (box5.inBox == 'o1InBox' && box5.o1 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && down) {
+                ballDX = 5;
+                ballDY = 0;
+                HitStone.play();
+            }
+
+
+
+            // tile 8
+            if (box8.inBox == 'o2InBox' && box8.o2 == true && ballDiv.style.top == parseInt(box8.y) + 'px' && ballDiv.style.left == parseInt(box8.x) + 'px' && up) {
+                ballDX = 5;
+                ballDY = 0;
+                HitStone.play();
+            }
+            if (box8.inBox == 'o2InBox' && box8.o2 == true && ballDiv.style.top == parseInt(box8.y) + 'px' && ballDiv.style.left == parseInt(box8.x) + 'px' && down) {
+                ballDX = -5;
+                ballDY = 0;
+                HitStone.play();
+            }
+            if (box8.inBox == 'o2InBox' && box8.o2 == true && ballDiv.style.top == parseInt(box8.y) + 'px' && ballDiv.style.left == parseInt(box8.x) + 'px' && left) {
+                ballDX = 0;
+                ballDY = 5;
+                HitStone.play();
+            }
+            if (box8.inBox == 'o2InBox' && box8.o2 == true && ballDiv.style.top == parseInt(box8.y) + 'px' && ballDiv.style.left == parseInt(box8.x) + 'px' && right) {
+                ballDX = 0;
+                ballDY = -5;
+                HitStone.play();
+            }
+            if (box8.inBox == 'o1InBox' && box8.o1 == true && ballDiv.style.top == parseInt(box8.y) + 'px' && ballDiv.style.left == parseInt(box8.x) + 'px' && up) {
+                ballDX = -5;
+                ballDY = 0;
+                HitStone.play();
+            }
+            if (box8.inBox == 'o1InBox' && box8.o1 == true && ballDiv.style.top == parseInt(box8.y) + 'px' && ballDiv.style.left == parseInt(box8.x) + 'px' && right) {
+                ballDX = 0;
+                ballDY = 5;
+                HitStone.play();
+            }
+            if (box8.inBox == 'o1InBox' && box8.o1 == true && ballDiv.style.top == parseInt(box8.y) + 'px' && ballDiv.style.left == parseInt(box8.x) + 'px' && left) {
+                ballDX = 0;
+                ballDY = -5;
+                HitStone.play();
+            }
+            if (box8.inBox == 'o1InBox' && box8.o1 == true && ballDiv.style.top == parseInt(box8.y) + 'px' && ballDiv.style.left == parseInt(box8.x) + 'px' && down) {
+                ballDX = 5;
+                ballDY = 0;
+                HitStone.play();
+            }
+
+
+            // winning screen
+            if (ballDiv.style.top == 225 + 'px' && ballDiv.style.left == 350 + 'px') {
                 clearInterval(move);
                 ballDX = 0;
                 ballDY = 0;
