@@ -243,6 +243,7 @@ $(function () {
                     clearInterval(move);
                     ballDX = 0;
                     ballDY = 0;
+                    $("#timerScore").html("Time: " + $("#timer").text());
                     $('#winningScreen').show();
                     //stoptime();
                     stopCounter();
