@@ -364,12 +364,17 @@ body{
     left: 120px;
     z-index: 2;
 }
-#timer_out{
+
+
+#timer{
     position: absolute;
     top: 60px;
     left:  285px;
     font-size:  30px;
     color:  #0094ff
+}
+/*#timer_out{
+    
 }
 #colon{
     position: absolute;
@@ -385,3 +390,4 @@ body{
     font-size:  30px;
     color:  #0094ff
 }
+*/

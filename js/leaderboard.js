@@ -17,7 +17,7 @@ $.ajax({ url: "https://api.mongolab.com/api/1/databases/comp2910/collections/lea
 function sendData() {
 	var user = $("#userId").val();
 	$.ajax({ url: "https://api.mongolab.com/api/1/databases/comp2910/collections/leaderboard?apiKey=m62xZhBH7kLiSw-6xFKTS87LCi1QQ3lJ",
-		data: JSON.stringify({"username" : user, "score" : timer_out}),
+		data: JSON.stringify({"username" : user, "score" : $("#timer").text()}),
 		type: "POST",
 		contentType: "application/json"
 	});
