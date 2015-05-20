@@ -213,77 +213,85 @@ $(function () {
             ball.style.height = ballHeight;
         }
 
-        function move(){
+        function move() {
             ballDiv.style.top = parseInt(ballDiv.style.top) + ballDY + 'px';
             ballDiv.style.left = parseInt(ballDiv.style.left) + ballDX + 'px';
             detectInTile();
         }
 
-        function detectInTile(){
-            if(ballDiv.style.top < parseInt(360) + 'px') {
+        function detectInTile() {
+            if (ballDiv.style.top < parseInt(360) + 'px') {
                 direction();
-                
+
             }
         }
 
-        function direction(){
-            if(ballDX == 0 && ballDY == -5){
+        function direction() {
+            if (ballDX == 0 && ballDY == -5) {
                 up = true;
+            } else {
+                up = false;
             }
-            if(ballDX == 0 && ballDY == 5){
+            if (ballDX == 0 && ballDY == 5) {
                 down = true;
+            } else {
+                down = false;
             }
-            if(ballDX == 5 && ballDY == 0){
+            if (ballDX == 5 && ballDY == 0) {
                 right = true;
+            } else {
+                right = false;
             }
-            if(ballDX == -5 && ballDY == 0){
+            if (ballDX == -5 && ballDY == 0) {
                 left = true;
+            } else {
+                left = false;
             }
             collision();
         }
 
-            // when the ball hit any wall or obstacle, the heading direction of the ball would change
-            function collision() {
-                if(ballDiv.style.top == parseInt(100) + 'px'){
-                    ballDX = 0;
-                    ballDY = 5;
-                    HitWall.play();
-                }
-                if(ballDiv.style.top == parseInt(340) + 'px'){
-                    ballDX = 0;
-                    ballDY = -5;
-                    HitWall.play();
-                }
-                if(ballDiv.style.left == parseInt(80) + 'px'){
-                    ballDX = 5;
-                    ballDY = 0;
-                }
-                if(box5.inBox == 'o2InBox' && o2 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px'){
-                    ballDX = 5;
-                    ballDY = 0;
-                    HitStone.play();
-                }
-                if(box5.inBox == 'o1InBox' && o1 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && up){
-                    ballDX = -5;
-                    ballDY = 0;
-                    HitStone.play();
-                }
-                if(box5.inBox == 'o1InBox' && o1 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && right){
-                    ballDX = 0;
-                    ballDY = 5;
-                    HitStone.play();
-                }
-                if (ballDiv.style.top == 230 + 'px' && ballDiv.style.left == 350 + 'px') {
-                    clearInterval(move);
-                    ballDX = 0;
-                    ballDY = 0;
-                    $("#timerScore").html("Time: " + $("#timer").text());
-                    $('#winningScreen').show();
-                    //stoptime();
-                    stopCounter();
-                }
+        // when the ball hit any wall or obstacle, the heading direction of the ball would change
+        function collision() {
+            if (ballDiv.style.top == parseInt(100) + 'px') {
+                ballDX = 0;
+                ballDY = 5;
+                HitWall.play();
             }
-        
+            if (ballDiv.style.top == parseInt(340) + 'px') {
+                ballDX = 0;
+                ballDY = -5;
+                HitWall.play();
+            }
+            if (ballDiv.style.left == parseInt(80) + 'px') {
+                ballDX = 5;
+                ballDY = 0;
+            }
+            if (box5.inBox == 'o2InBox' && o2 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px') {
+                ballDX = 5;
+                ballDY = 0;
+                HitStone.play();
+            }
+            if (box5.inBox == 'o1InBox' && o1 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && up) {
+                ballDX = -5;
+                ballDY = 0;
+                HitStone.play();
+            }
+            if (box5.inBox == 'o1InBox' && o1 == true && ballDiv.style.top == parseInt(box5.y) + 'px' && ballDiv.style.left == parseInt(box5.x) + 'px' && right) {
+                ballDX = 0;
+                ballDY = 5;
+                HitStone.play();
+            }
+            if (ballDiv.style.top == 230 + 'px' && ballDiv.style.left == 350 + 'px') {
+                clearInterval(move);
+                ballDX = 0;
+                ballDY = 0;
+                $("#timerScore").html("Time: " + $("#timer").text());
+                $('#winningScreen').show();
+                //stoptime();
+                stopCounter();
+            }
+        }
+
 
         $('#submit').click(function () {
             $('#win').hide();
