@@ -42,7 +42,16 @@ $(function () {
     // instruction page one
     $('#instructionBtn').click(function () {
         $('#start_screen').hide();
+        $('#achievement_page').hide();
         $('#instructionOne').show();
+        ion.sound.play("click_button");
+    });
+
+    // leaderboard page
+    $('#leaderboardBtn').click( function() {
+	    $('#leaderboard').show();
+        $('#leftArrow2').show();
+		
         ion.sound.play("click_button");
     });
 
@@ -53,6 +62,20 @@ $(function () {
         ion.sound.play("click_button");
     });
 
+    // achievement page
+    $('#achievementBtn').click( function() {
+	    $('#achievement_page').show();
+        $('#leftArrow_one').show();
+		$('#start_screen').hide();
+
+        ion.sound.play("click_button");
+    });
+	
+	$('#leftArrow_one').click( function() {
+	    $('#achievement_page').hide();
+	    $('#start_screen').show();
+        ion.sound.play("click_button");
+    });
 
     // start button on instruction page one
     $('.startGame').click(function () {
@@ -97,6 +120,7 @@ $(function () {
     $('#levelOneBtn').click(function () {
         $('#level_selection').hide();
         $('#gameScreen').show();
+        $('#achievement_one').show();
         ion.sound.play("click_button");
         ion.sound.play("gamebg"); //new game sound starts
         ion.sound.stop("startbg");
@@ -119,6 +143,19 @@ $(function () {
             startCounter();
         }
     })
+    //achievement function
+    $('#achievement_one').click( function() {
+	    $('#achievement_one').hide();
+	});
+	
+	$('#achievement_two').click( function() {
+	    $('#achievement_two').hide();
+	});
+	
+	$('#achievement_three').click( function() {
+	    $('#achievement_three').hide();
+	});
+
 
     var ballWidth = 20 + 'px';
     var ballHeight = 20 + 'px';
@@ -558,6 +595,9 @@ $(function () {
                 $("#timerScore").html("Time: " + $("#timer").text());
                 $('#winningScreen').show();
                 stopCounter();
+                if(seconds>"05"){
+					$('#achievement_three').hide();
+				}
             }
         }
 
