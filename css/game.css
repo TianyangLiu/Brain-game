@@ -302,14 +302,10 @@ body{
 
 #obstacle1 {
     position: absolute;
-    top: 500px;
-    left: 100px;
 }
 
 #obstacle2 {
     position: absolute;
-    top: 500px;
-    left: 250px;
 }
 
 #obstacle3 {
@@ -339,6 +335,14 @@ body{
     position: absolute;
     top: 20px;
     left: 330px;
+}
+
+#pause_button:hover{
+    -webkit-transform:scale(1.25); /* Safari and Chrome */
+	-moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+     transform:scale(1.25);
 }
 
 #winningScreen{
@@ -420,3 +424,70 @@ body{
     color:  #0094ff
 }
 */
+
+#pause_menu{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: none;
+}
+
+#menu_background img{
+    height: 500px;
+}
+
+#resume_button{
+    position: absolute;
+    top: 70px;
+    right: 35px;
+}
+
+#resume_button:hover{
+	-webkit-transform:scale(1.25); /* Safari and Chrome */
+	-moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+     transform:scale(1.25);
+}
+
+#replay_button{
+    position: absolute;
+    top: 170px;
+    right: 35px;
+}
+
+#replay_button:hover{
+	-webkit-transform:scale(1.25); /* Safari and Chrome */
+	-moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+     transform:scale(1.25);
+}
+
+#start_screen_button{
+    position: absolute;
+    top: 270px;
+    right: 35px;
+}
+
+#start_screen_button:hover{
+	-webkit-transform:scale(1.25); /* Safari and Chrome */
+	-moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+     transform:scale(1.25);
+}
+
+#music_button{
+    position: absolute;
+    top: 370px;
+    right: 35px;
+}
+
+#music_button:hover{
+	-webkit-transform:scale(1.25); /* Safari and Chrome */
+	-moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+     transform:scale(1.25);
+}

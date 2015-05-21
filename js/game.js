@@ -112,12 +112,34 @@ $(function () {
 
     //pause button functions
     $("#pause_button").click(function () {
+        $('#pause_menu').show();
+
         // if timerCount has an interval, stop the timer and clear the interval; otherwise, start a new interval
         if (timerCount) {
             stopCounter();
         } else {
             startCounter();
         }
+
+        if (ballTimer) {
+            clearInterval(ballTimer);
+        }
+    });
+
+    $('#resume_button').click(function () {
+        $('#pause_menu').hide();
+    })
+
+    $('#replay_button').click(function () {
+        $('#pause_menu').hide();
+    })
+
+    $('#start_screen_button').click(function () {
+        document.location.href = "";
+    })
+
+    $('#music_button').click(function () {
+        $('#pause_menu').hide();
     })
 
     var ballWidth = 20 + 'px';
@@ -127,6 +149,12 @@ $(function () {
     //var ballDivHeight = 15 + 'px';
     var ballDivTop = 400 + 'px';
     var ballDivLeft = 200 + 'px';
+
+    var obstacle1Top = 500 + 'px';
+    var obstacle1Left = 100 + 'px';
+
+    var obstacle2Top = 500 + 'px';
+    var obstacle2Left = 250 + 'px';
 
     var ballDX = 0;
     var ballDY = -5;
@@ -138,11 +166,15 @@ $(function () {
 
     var gameOn = false;
 
+    var ballTimer;
+
     var box1 = { x: 125, y: 140, inBox: null, o1: false, o2: false };
     var box2 = { x: 200, y: 140, inBox: null, o1: false, o2: false };
     var box4 = { x: 125, y: 225, inBox: null, o1: false, o2: false };
     var box5 = { x: 200, y: 225, inBox: null, o1: false, o2: false };
     var box8 = { x: 200, y: 310, inBox: null, o1: false, o2: false };
+
+
 
     // level one game setting start here
     function level1() {
@@ -245,19 +277,28 @@ $(function () {
 
         // when the ball is clicked, the ball will start moving. This is done because the timer method
         $('#ballDiv').click(function () {
-            if (gameOn == true) {
-                setInterval(move, 10); // timer
+            if (gameOn) {
+                ballTimer = setInterval(move, 10); // timer
             }
             ion.sound.play("click_button");
         });
 
 
         function init() {
+
+
             ballDiv.style.top = ballDivTop;
             ballDiv.style.left = ballDivLeft;
 
             ball.style.width = ballWidth;
             ball.style.height = ballHeight;
+
+            obstacle1.style.top = obstacle1Top;
+            obstacle1.style.left = obstacle1Left;
+
+            obstacle2.style.top = obstacle2Top;
+            obstacle2.style.left = obstacle2Left;
+
         }
 
 
@@ -567,6 +608,7 @@ $(function () {
             $('#formContainer').hide();
             $('#gameScreen').hide();
             $('#start_screen').show();
+            gameOn = false;
         });
 
     } // level one game ends here
