@@ -131,7 +131,7 @@ $(function () {
     })
 
     $('#replay_button').click(function () {
-        $('#pause_menu').hide();
+        document.reset();
     })
 
     $('#start_screen_button').click(function () {
