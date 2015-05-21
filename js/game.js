@@ -130,9 +130,9 @@ $(function () {
 
     var gameOn = false;
 
-    var box1 = { x: 120, y: 140, inBox: null, o1: false, o2: false };
+    var box1 = { x: 125, y: 140, inBox: null, o1: false, o2: false };
     var box2 = { x: 200, y: 140, inBox: null, o1: false, o2: false };
-    var box4 = { x: 120, y: 225, inBox: null, o1: false, o2: false };
+    var box4 = { x: 125, y: 225, inBox: null, o1: false, o2: false };
     var box5 = { x: 200, y: 225, inBox: null, o1: false, o2: false };
     var box8 = { x: 200, y: 310, inBox: null, o1: false, o2: false };
 
@@ -187,24 +187,24 @@ $(function () {
             });
         }
 
-        // check if the ball should turn at the fifth box
+        // check which tile contains which obstacle
         function checkInBox() {
             // obstacle in the 1st tile
-            if (obstacle1.style.left > 75 + 'px' && obstacle1.style.left < 160 + 'px' && obstacle1.style.top > 100 + 'px' && obstacle1.style.top < 185 + 'px') {
+            if (obstacle1.style.left > 75 + 'px' && obstacle1.style.left < 160 + 'px' && obstacle1.style.top > 100 + 'px' && obstacle1.style.top < 190 + 'px') {
                 box1.inBox = 'o1InBox';
                 box1.o1 = true;
             }
-            if (obstacle2.style.left > 75 + 'px' && obstacle2.style.left < 160 + 'px' && obstacle2.style.top > 100 + 'px' && obstacle2.style.top < 185 + 'px') {
+            if (obstacle2.style.left > 75 + 'px' && obstacle2.style.left < 160 + 'px' && obstacle2.style.top > 100 + 'px' && obstacle2.style.top < 190 + 'px') {
                 box1.inBox = 'o2InBox';
                 box1.o2 = true;
             }
 
             // obstacle in the 2nd tile
-            if (obstacle1.style.left > 165 + 'px' && obstacle1.style.left < 245 + 'px' && obstacle1.style.top > 105 + 'px' && obstacle1.style.top < 185 + 'px') {
+            if (obstacle1.style.left > 165 + 'px' && obstacle1.style.left < 245 + 'px' && obstacle1.style.top > 105 + 'px' && obstacle1.style.top < 190 + 'px') {
                 box2.inBox = 'o1InBox';
                 box2.o1 = true;
             }
-            if (obstacle2.style.left > 165 + 'px' && obstacle2.style.left < 245 + 'px' && obstacle2.style.top > 105 + 'px' && obstacle2.style.top < 185 + 'px') {
+            if (obstacle2.style.left > 165 + 'px' && obstacle2.style.left < 245 + 'px' && obstacle2.style.top > 105 + 'px' && obstacle2.style.top < 190 + 'px') {
                 box2.inBox = 'o2InBox';
                 box2.o2 = true;
             }
