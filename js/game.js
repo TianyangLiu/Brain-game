@@ -93,7 +93,7 @@ $(function () {
     });
 
 
-    // level seletion page to game page
+    // level selection page to game page
     $('#levelOneBtn').click(function () {
         $('#level_selection').hide();
         $('#gameScreen').show();
@@ -110,7 +110,15 @@ $(function () {
         ion.sound.play("click_button");
     });
 
-
+    //pause button functions
+    $("#pause_button").click(function () {
+        // if timerCount has an interval, stop the timer and clear the interval; otherwise,           start a new interval
+        if (timerCount) {
+            stopCounter();
+        } else {
+            startCounter();
+        }
+    })
 
     var ballWidth = 20 + 'px';
     var ballHeight = 20 + 'px';
@@ -555,7 +563,6 @@ $(function () {
                 ballDY = 0;
                 $("#timerScore").html("Time: " + $("#timer").text());
                 $('#winningScreen').show();
-                //stoptime();
                 stopCounter();
             }
         }
@@ -564,7 +571,8 @@ $(function () {
         $('#submit').click(function () {
             $('#win').hide();
             $('#formContainer').hide();
-            $('#leaderboard').show();
+            $('#gameScreen').hide();
+            $('#start_screen').show();
         });
 
     } // level one game ends here

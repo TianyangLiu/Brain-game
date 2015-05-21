@@ -1,9 +1,12 @@
+var timerCount = null;
+
 function startCounter() {
     timerCount = setInterval(timerIncrement, 1000);
 }
 
 function stopCounter() {
     clearInterval(timerCount);
+    timerCount = null;
 }
 
 function timerIncrement() {
@@ -28,7 +31,7 @@ function timerIncrement() {
         hours += 1;
     }
     if (hours == 24) {
-        $("#timer").innerHTML = "Time has stopped.";
+        $("#timer").html("Time has stopped.");
     }
 
     $("#timer").text(pad(hours) + ":" + pad(mins) + ":" + pad(seconds));
@@ -40,42 +43,3 @@ function pad(number) {
     }
     return number;
 }
-
-
-
-
-/*var i, timerstop, divide, gu8, minutestop, timer_out;
-	timer_out =0;
-	divide = 1;
-	j = 0;
-	function start(){
-		timerstop = self.setInterval("increment()",(1000/divide))
-        minutestop = self.setInterval("increments()",(60000/divide))
-	}
-	function increment(){
-	
-	
-	 
-		timer_out++;
-		if(timer_out>=60){
-	        timer_out = 0;
-	    }
-		document.getElementById("timer_out").innerHTML=(timer_out/divide);
-	
-     
-	}
-	
-		function increments(){
-		
-		j++;
-        document.getElementById("minutes").innerHTML=(j/divide);
-      
-	}
-	function stoptime(){
-            
-		clearInterval(timerstop);
-		timerstop = null;
-        clearInterval(minutestop);
-		minutestop = null;
-	}
-    */

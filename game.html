@@ -82,12 +82,6 @@
         <div class="drop-digit tile" id="drop9"></div>
 
         <div id="timer"><span>00:00:00</span></div>
-        
-        <!-- timer 
-        <span id ="timer_out">0</span>
-        <span id ="colon">:</span>
-        <span id ="minutes">0</span>
-        -->
 
         <!-- pause button; click this button to pasue the game and also display the menu bar -->
         <div id="pause_button"><img src="images/buttons/pause_button.png" alt="pause"/></div>
@@ -96,20 +90,22 @@
 
 
     <div id="winningScreen">
-            <div id="formContainer">
-                <form id="form" name="form" onsubmit="return sendData()">
-                    <span id="timerScore">Time: </span></br>
-		            Enter Username:
-                    <input id="userId" name="userId" type="text"  />
-		            <input id="submit" name="submit" type="submit" value="Submit"/>
-	            </form>   
-            </div>
-            <div id="win"><img src="images/winningScreen.png" alt="winning screen"></img></div>
+        <div id="formContainer">
+            <form id="form" name="form" onsubmit="return sendData()">
+                 <span id="timerScore">Time: </span></br>
+		         Enter Username:
+                 <input id="userId" name="userId" type="text"  />
+		         <input id="submit" name="submit" type="submit" value="Submit"/>
+	        </form>   
+        </div>
+        <div id="win"><img src="images/winningScreen.png" alt="winning screen"></img>
+        </div>
     </div>
 
     <div id="leaderboard">
         <div id="leaderboardScroll"></div>
-        <div class="leftArrow2"><img src="images/buttons/leftArrow.png" alt="back"></img></div>
+        <div class="leftArrow2"><img src="images/buttons/leftArrow.png" alt="back"></img>
+        </div>
     </div>
 
 
