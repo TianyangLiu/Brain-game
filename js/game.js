@@ -112,7 +112,7 @@ $(function () {
 
     //pause button functions
     $("#pause_button").click(function () {
-        // if timerCount has an interval, stop the timer and clear the interval; otherwise,           start a new interval
+        // if timerCount has an interval, stop the timer and clear the interval; otherwise, start a new interval
         if (timerCount) {
             stopCounter();
         } else {
@@ -144,16 +144,10 @@ $(function () {
     var box5 = { x: 200, y: 225, inBox: null, o1: false, o2: false };
     var box8 = { x: 200, y: 310, inBox: null, o1: false, o2: false };
 
-
-
-
-
-
     // level one game setting start here
     function level1() {
         init();
         drag_drop();
-        //start();
         startCounter(); // timer start
 
         function drag_drop() {
