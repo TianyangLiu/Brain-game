@@ -435,45 +435,6 @@ body{
     background-color: #fff;
 }
 
-/*#timer_out{
-    
-}
-#colon{
-    position: absolute;
-    top: 60px;
-    left:  270px;
-    font-size:  30px;
-    color:  #0094ff
-}
-#minutes{
-    position: absolute;
-    top: 60px;
-    left:  250px;
-    font-size:  30px;
-    color:  #0094ff
-}
-*/
-#achievement_one{
-position:absolute;
-margin-top:-500px;
-margin-left: 130px;
-
-}
-#achievement_two{
-position:absolute;
-margin-top:-350px;
-margin-left:30px;
-
-}
-
-#achievement_three{
-position:absolute;
-
-margin-left:30px;
-
-margin-top:20px;
-}
-
 #pause_menu{
     position: absolute;
     top: 0px;
@@ -539,4 +500,25 @@ margin-top:20px;
     -ms-transform:scale(1.25); /* IE 9 */
     -o-transform:scale(1.25); /* Opera */
      transform:scale(1.25);
+}
+
+#achievement_one
+{
+    position: absolute;
+    background-image: url("../images/achievement/achievement_one.png");
+    background-position: center; 
+    background-repeat: no-repeat;
+    top: 160px;
+    left: 0px;
+	z-index: 3;
+	padding-top: 50px;
+    height: 20%;
+	background-color:#333;
+	color:white;
+	font-size:30px;
+    font-weight: bold;
+	border:5px solid black;
+	text-align:center;
+	border-radius:20px;
+	display:none;
 }

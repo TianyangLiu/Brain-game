@@ -120,7 +120,7 @@ $(function () {
     $('#levelOneBtn').click(function () {
         $('#level_selection').hide();
         $('#gameScreen').show();
-        $('#achievement_one').show();
+        showtipPop('You Have Unlocked An Achievement');
         ion.sound.play("click_button");
         ion.sound.play("gamebg"); //new game sound starts
         ion.sound.stop("startbg");
@@ -180,6 +180,15 @@ $(function () {
 	$('#achievement_three').click( function() {
 	    $('#achievement_three').hide();
 	});
+
+    /** Achievements message**/
+    function showtipPop(message) {
+	    $("#achievement_one").text(message);
+	    $("#achievement_one").slideToggle(200);
+	    setTimeout(function () {
+		    $("#achievement_one").slideToggle(200);
+	    }, 3000);
+    }
 
 
     var ballWidth = 20 + 'px';
