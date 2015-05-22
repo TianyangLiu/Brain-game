@@ -1,5 +1,29 @@
 $(function () {
 
+    var ballWidth = 20 + 'px';
+    var ballHeight = 20 + 'px';
+
+    //var ballDivWidth = 15 + 'px';
+    //var ballDivHeight = 15 + 'px';
+    var ballDivTop = 400 + 'px';
+    var ballDivLeft = 200 + 'px';
+
+    var ballDX = 0;
+    var ballDY = -5;
+
+    var up = false // determine the heading direction of the ball
+    var left = false // determine the heading direction of the ball
+    var down = false // determine the heading direction of the ball
+    var right = false // determine the heading direction of the ball
+
+    var gameOn = false;
+
+    var box1 = { x: 120, y: 140, inBox: null, o1: false, o2: false };
+    var box2 = { x: 200, y: 140, inBox: null, o1: false, o2: false };
+    var box4 = { x: 120, y: 225, inBox: null, o1: false, o2: false };
+    var box5 = { x: 200, y: 225, inBox: null, o1: false, o2: false };
+    var box8 = { x: 200, y: 310, inBox: null, o1: false, o2: false };
+
     //ion.sound js library initialization
     ion.sound({
         sounds: [
@@ -145,10 +169,6 @@ $(function () {
         } else {
             startCounter();
         }
-
-        if (ballTimer) {
-            clearInterval(ballTimer);
-        }
     });
 
     $('#resume_button').click(function () {
@@ -189,31 +209,6 @@ $(function () {
 		    $("#achievement_one").slideToggle(200);
 	    }, 3000);
     }
-
-
-    var ballWidth = 20 + 'px';
-    var ballHeight = 20 + 'px';
-
-    //var ballDivWidth = 15 + 'px';
-    //var ballDivHeight = 15 + 'px';
-    var ballDivTop = 400 + 'px';
-    var ballDivLeft = 200 + 'px';
-
-    var ballDX = 0;
-    var ballDY = -5;
-
-    var up = false // determine the heading direction of the ball
-    var left = false // determine the heading direction of the ball
-    var down = false // determine the heading direction of the ball
-    var right = false // determine the heading direction of the ball
-
-    var gameOn = false;
-
-    var box1 = { x: 120, y: 140, inBox: null, o1: false, o2: false };
-    var box2 = { x: 200, y: 140, inBox: null, o1: false, o2: false };
-    var box4 = { x: 120, y: 225, inBox: null, o1: false, o2: false };
-    var box5 = { x: 200, y: 225, inBox: null, o1: false, o2: false };
-    var box8 = { x: 200, y: 310, inBox: null, o1: false, o2: false };
 
     // level one game setting start here
     function level1() {
