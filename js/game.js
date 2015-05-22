@@ -134,15 +134,40 @@ $(function () {
         ion.sound.play("click_button");
     });
 
+
     //pause button functions
     $("#pause_button").click(function () {
+        $('#pause_menu').show();
+
         // if timerCount has an interval, stop the timer and clear the interval; otherwise, start a new interval
         if (timerCount) {
             stopCounter();
         } else {
             startCounter();
         }
+
+        if (ballTimer) {
+            clearInterval(ballTimer);
+        }
+    });
+
+    $('#resume_button').click(function () {
+        $('#pause_menu').hide();
     })
+
+    $('#replay_button').click(function () {
+        document.reset();
+    })
+
+    $('#start_screen_button').click(function () {
+        document.location.href = "";
+    })
+
+    $('#music_button').click(function () {
+        $('#pause_menu').hide();
+    })
+
+
     //achievement function
     $('#achievement_one').click( function() {
 	    $('#achievement_one').hide();
