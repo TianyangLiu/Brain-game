@@ -91,6 +91,9 @@ $(function () {
     $('#achievementBtn').click(function () {
         $('#achievement_page').show();
         $('#leftArrow_one').show();
+        $('#achievementF').show();
+        $('#achievementS').show();
+        $('#achievementT').show();
         $('#start_screen').hide();
 
         ion.sound.play("click_button");

@@ -201,8 +201,8 @@ body{
 
 #leftArrow_one{
 	position: absolute;
-	top: 700px;
-	left: 888px;
+	top: 630px;
+	left: 260px;
     display: none;
 }
 
@@ -541,4 +541,27 @@ body{
 	text-align:center;
 	border-radius:20px;
 	display:none;
+}
+
+#achievement_page {
+    position: absolute;
+    display: none;
+}
+#achievementF {
+    position:absolute;
+    top: 60px;
+    left: 50px;
+    display: none;
+}
+#achievementS {
+    position:absolute;
+    top: 260px;
+    left: 50px;
+    display: none;
+}
+#achievementT {
+    position:absolute;
+    top: 460px;
+    left: 50px;
+    display: none;
 }
