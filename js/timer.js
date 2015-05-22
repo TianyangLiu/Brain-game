@@ -1,5 +1,7 @@
 var timerCount = null;
-
+var hours;
+var mins;
+var seconds;
 function startCounter() {
     timerCount = setInterval(timerIncrement, 1000);
 }
@@ -10,9 +12,7 @@ function stopCounter() {
 }
 
 function timerIncrement() {
-    var hours;
-    var mins;
-    var seconds;
+
     var timeDisplay = $("#timer").text();
     var splitter = timeDisplay.split(":");
 
