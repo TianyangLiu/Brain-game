@@ -522,3 +522,23 @@ body{
 	border-radius:20px;
 	display:none;
 }
+
+#show_achievements{
+    position: absolute;
+    background-image: url("../images/achievement/achievement_two.png");
+    background-position: center; 
+    background-repeat: no-repeat;
+    top: 180px;
+    left: 0px;
+	z-index: 4;
+	padding-top: 50px;
+    height: 20%;
+	background-color:#333;
+	color:white;
+	font-size:30px;
+    font-weight: bold;
+	border:5px solid black;
+	text-align:center;
+	border-radius:20px;
+	display:none;
+}

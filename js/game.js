@@ -120,7 +120,7 @@ $(function () {
     $('#levelOneBtn').click(function () {
         $('#level_selection').hide();
         $('#gameScreen').show();
-        showtipPop('You Have Unlocked An Achievement');
+        achievementOneMessage('Unlock an Achievement: First Time Game');
         ion.sound.play("click_button");
         ion.sound.play("gamebg"); //new game sound starts
         ion.sound.stop("startbg");
@@ -156,7 +156,7 @@ $(function () {
     })
 
     $('#replay_button').click(function () {
-        document.reset();
+        //document.reset();
     })
 
     $('#start_screen_button').click(function () {
@@ -164,29 +164,25 @@ $(function () {
     })
 
     $('#music_button').click(function () {
-        $('#pause_menu').hide();
+        
     })
 
 
-    //achievement function
-    $('#achievement_one').click( function() {
-	    $('#achievement_one').hide();
-	});
-	
-	$('#achievement_two').click( function() {
-	    $('#achievement_two').hide();
-	});
-	
-	$('#achievement_three').click( function() {
-	    $('#achievement_three').hide();
-	});
 
     /** Achievements message**/
-    function showtipPop(message) {
+    function achievementOneMessage(message) {
 	    $("#achievement_one").text(message);
 	    $("#achievement_one").slideToggle(200);
 	    setTimeout(function () {
 		    $("#achievement_one").slideToggle(200);
+	    }, 3000);
+    }
+
+    function achievementsMessage(message) {
+	    $("#show_achievements").text(message);
+	    $("#show_achievements").slideToggle(200);
+	    setTimeout(function () {
+		    $("#show_achievements").slideToggle(200);
 	    }, 3000);
     }
 
@@ -317,7 +313,7 @@ $(function () {
         // when the ball is clicked, the ball will start moving. This is done because the timer method
         $('#ballDiv').click(function () {
             if (gameOn == true) {
-                setInterval(move, 10); // timer
+                ballTimer = setInterval(move, 10); // timer
             }
             ion.sound.play("click_button");
         });
@@ -623,14 +619,18 @@ $(function () {
 
             // winning screen
             if (ballDiv.style.top == 225 + 'px' && ballDiv.style.left == 350 + 'px') {
-                clearInterval(move);
+                clearInterval(ballTimer);
                 ballDX = 0;
                 ballDY = 0;
+
                 $("#timerScore").html("Time: " + $("#timer").text());
                 $('#winningScreen').show();
+
+                achievementsMessage('Unlock an Achievement: win a game');
                 stopCounter();
-                if(seconds>"05"){
-					$('#achievement_three').hide();
+                if(seconds > "05"){
+                    setTimeout(function(){ achievementsMessage('Unlock an Achievement: win in 5 seconds'); }, 3000);
+                   
 				}
             }
         }
